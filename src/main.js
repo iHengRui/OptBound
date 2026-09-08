@@ -163,7 +163,7 @@ app.innerHTML = `
     <section class="hero directory-hero" id="directory">
       <div class="content-width hero-inner">
         <p class="eyebrow">Optimization complexity benchmark</p>
-        <h1>OptBound</h1>
+        <h1 class="optbound-wordmark"><span class="brand-mark">Opt</span><span class="brand-name">Bound</span></h1>
         <p class="hero-subtitle">A Unified Benchmark of Lower and Upper Complexity Bounds in Optimization</p>
         <p class="lede">Paper-backed lower and upper complexity bounds across Distributed Optimization and Stochastic Optimization.</p>
         <div class="hero-attribution">
@@ -406,7 +406,7 @@ app.innerHTML = `
 
   <footer>
     <div class="content-width footer-inner">
-      <span>OptBound</span>
+      <span class="optbound-wordmark"><span class="brand-mark">Opt</span><span class="brand-name">Bound</span></span>
       <span>Current release: Decentralized Optimization · v${data.meta.version}</span>
       <a class="icon-button" href="#top" data-scroll-target="top" aria-label="Back to top" title="Back to top"><i data-lucide="arrow-up"></i></a>
     </div>

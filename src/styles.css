@@ -132,7 +132,7 @@ a:hover {
 }
 
 .brand-mark {
-  color: var(--accent);
+  color: var(--text);
 }
 
 .brand-divider {
@@ -142,8 +142,13 @@ a:hover {
 
 .brand-name {
   margin-left: 0;
-  color: var(--text);
+  color: var(--accent);
   font-weight: 760;
+}
+
+.optbound-wordmark {
+  font-weight: 760;
+  white-space: nowrap;
 }
 
 .main-nav {
