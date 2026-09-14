@@ -1283,6 +1283,17 @@ sup {
   font-variant-numeric: tabular-nums;
 }
 
+.review-paper-inactive .review-paper-title {
+  color: var(--muted);
+}
+
+.review-paper-note {
+  margin: 7px 0 0 38px;
+  color: var(--faint);
+  font-size: 10px;
+  line-height: 1.5;
+}
+
 .review-occurrence-list {
   display: grid;
   gap: 5px;

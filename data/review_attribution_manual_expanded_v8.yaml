@@ -1,5 +1,7 @@
-schema_version: 1
+schema_version: 2
 table_version: 8
+review_date: '2026-09-12'
+review_edition: manual_review_20260912
 
 contributors:
   - name: Hengrui Zhang
@@ -103,5 +105,73 @@ reviewers:
       - ref-arxiv-2106-14075
       - ref-arxiv-2210-03232
       - ref-arxiv-1606-08904
+
+# These references support additions made by the agent review and approved by
+# the user. They are intentionally not assigned to any named human reviewer.
+agent_reviewed_reference_ids:
+  - ref-arxiv-2402-02356
+  - ref-arxiv-1009-0571
+  - ref-arxiv-1406-0919
+
+# The paper was part of the original five-paper human assignment but no longer
+# supports a retained bound in the current table. Keeping it here preserves the
+# historical assignment without adding an uncited item to the bibliography.
+inactive_human_reviewed_reference_ids:
+  - ref-arxiv-2408-09775
+
+inactive_human_reviewed_references:
+  - reference_id: ref-arxiv-2408-09775
+    title: Faster Adaptive Decentralized Learning Algorithms
+    url: https://arxiv.org/abs/2408.09775
+    state: superseded
+    reason: The row-11 upper bound was replaced by a criterion-matched bound from arXiv:2210.13931.
+
+# Row-level provenance records the manual review itself, including cases where
+# a newly admitted projection cites a paper that also has a human assignment.
+agent_reviewed_rows:
+  - cell_id: agent_van_sum_nc_sm_sfo_stat_goss_sync_ncmp_n_sfo_gradient_norm_finite_sum
+    row: 11
+    scope: [measure, LB, UB, status]
+  - cell_id: agent_van_sto_nc_sm_sfo_stat_goss_sync_ncmp_n_sfo_gradient_norm_general
+    row: 12
+    scope: [LB]
+  - cell_id: agent_van_sum_c_sm_fo_stat_goss_sync_ncmp_deterministic_regime_linear_span_path_network_n_fo_c79c5a1b
+    row: 14
+    scope: [UB, status]
+  - cell_id: agent_van_sum_sc_sm_sfo_stat_goss_sync_ncmp_n_sfo_distance_to_optimum_finite_sum
+    row: 25
+    scope: [measure]
+  - cell_id: agent_van_sum_sc_ns_fo_tv_goss_sync_ncmp_n_fo_distance_to_optimum_general
+    row: 29
+    scope: [measure, UB]
+  - cell_id: agent_van_sto_c_sm_sfo_stat_goss_sync_ncmp_auxiliary_restart_epoch_initialization_disagreemen_a4e48d2e
+    row: 33
+    scope: [LB, status]
+  - cell_id: manual_van_sum_c_ns_sfo_tv_goss_objective_gap
+    row: 37
+    scope: [UB]
+  - cell_id: manual_van_sum_nc_sm_sfo_tv_goss_stationarity
+    row: 48
+    scope: [UB]
+  - cell_id: manual_van_sto_sc_ns_sfo_tv_goss_objective_gap
+    row: 55
+    scope: [UB]
+  - cell_id: agent_van_sto_c_ns_sfo_stat_goss_sync_ncmp_n_sfo_objective_gap_general
+    row: 57
+    scope: [measure, UB]
+  - cell_id: agent_van_sto_nc_sm_sfo_stat_goss_sync_ncmp_n_sfo_gradient_norm_squared_directed_row_stochastic
+    row: 60
+    scope: [LB, status]
+  - cell_id: manual_empty_van_sum_sc_ns_sfo_stat_goss
+    row: 63
+    scope: [tags, measure, UB, status]
+  - cell_id: manual_empty_van_sum_c_ns_fo_tv_goss
+    row: 66
+    scope: [tags, measure, UB, status]
+  - cell_id: manual_empty_van_sum_pl_sm_sfo_tv_goss
+    row: 72
+    scope: [coverage_decision]
+
+agent_review_label: Agent-reviewed with user approval
 
 unassigned_coverage_label: Coverage review pending

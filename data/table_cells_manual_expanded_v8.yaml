@@ -1,5 +1,7 @@
-generated_at: '2026-08-14T00:00:00+08:00'
+generated_at: '2026-09-12'
 source:
+  review_edition: manual_review_20260912
+  review_decisions: data/manual_review_decisions_20260912.yaml
   baseline_table: data/table_cells.yaml
   manual_additions: data/manual_expanded_additions.yaml
   manual_research_ledger: data/manual_expanded_research.yaml
@@ -12,9 +14,10 @@ source:
   b_class_scope_registry: data/b_class_scope_registry_v6.yaml
   comp_prox_tag_registry: data/comp_prox_tag_registry_v7.yaml
   notation: data/notation_manual_expanded_v8.yaml
-mode: manual_expanded_v8_priority_fixes
-warning: Independent large table. The 96-setting Cartesian grid remains auditable, while the omitted empty
-  settings are excluded from presentation.
+  manual_review: data/manual_review_decisions_20260912.yaml
+mode: agent_reviewed_user_approved_web_v8
+warning: Independent large table. The 96-setting Cartesian grid remains auditable, while the omitted empty settings
+  are excluded from presentation.
 presentation_scope:
   full_grid_settings: 96
   presented_settings: 47
@@ -189,7 +192,7 @@ counts:
   omitted_redundant_settings: 49
   baseline_evidence_settings: 29
   manual_addition_settings: 8
-  explicit_empty_settings: 12
+  explicit_empty_settings: 10
   removed_non_atomic_rows: 27
   renamed_duplicate_cell_ids: 1
 cells:
@@ -247,8 +250,7 @@ cells:
     - kovalev2021#curated:kovalev2021_lb_sc_sm_tv_fo
     - kovalev2021#curated:kovalev2021_ub_sc_sm_tv_fo
     blocked_selected_claims:
-    - 'UB kovalev2021#curated:kovalev2021_ub_sc_sm_tv_fo blocked: claim text matches non-vanilla marker:
-      \bdual[-_\s]?(?:gradient|first[-_\s]?order|sfo|oracle)\b'
+    - 'UB kovalev2021#curated:kovalev2021_ub_sc_sm_tv_fo blocked: claim text matches non-vanilla marker: \bdual[-_\s]?(?:gradient|first[-_\s]?order|sfo|oracle)\b'
   search_evidence:
     source: data/problem_type_search.yaml
     scope: local_10000_paper_corpus
@@ -404,8 +406,7 @@ cells:
       excluded_claims: 5
   manual_full_reaudit:
     original_cell_id: agent_van_sum_sc_sm_fo_stat_goss_sync_ncmp_n_fo_objective_gap_general
-    reason: MSDA queries exact gradients of Fenchel conjugates, a stronger side oracle than ordinary local
-      gradients.
+    reason: MSDA queries exact gradients of Fenchel conjugates, a stronger side oracle than ordinary local gradients.
 - cell_id: agent_van_sum_sc_ns_subg_tv_goss_sync_ncmp_n_subg_objective_gap_general
   order: 1460
   problem_tags:
@@ -646,8 +647,8 @@ cells:
   - GOSS
   - SYNC
   - NCMP
-  measure: \E\|\nabla F(\hat x)\|^2\le\eps_{\rm LB};\allowbreak \frac1{T_{\rm out}}\sum_{t=1}^{T_{\rm
-    out}}\E\|\nabla F(\bar x^{(t)})\|^2\le\eps_{\rm UB}
+  measure: \E\|\nabla F(\hat x)\|^2\le\eps_{\rm LB};\allowbreak \frac1{T_{\rm out}}\sum_{t=1}^{T_{\rm out}}\E\|\nabla
+    F(\bar x^{(t)})\|^2\le\eps_{\rm UB}
   lower_bound:
     claim_id: yuan2022#curated:yuan2022_lb_sto_nc_sm_stat_general_sfo
     display: \NSFO = \Omega(\Delta L \sigma^2/(N \eps^2) + \Delta L/(\sqrt{\rho} \eps))
@@ -766,8 +767,8 @@ cells:
   - GOSS
   - SYNC
   - NCMP
-  measure: \E\|\nabla F(\hat x)\|^2\le\eps_{\rm LB};\allowbreak \frac1{T+1}\sum_{k=0}^T\E\|\nabla F(\bar
-    x^{(k)})\|^2\le\eps_{\rm UB}
+  measure: \E\|\nabla F(\hat x)\|^2\le\eps_{\rm LB};\allowbreak \frac1{T+1}\sum_{k=0}^T\E\|\nabla F(\bar x^{(k)})\|^2\le\eps_{\rm
+    UB}
   lower_bound:
     claim_id: huang2022#curated:huang2022_lb_sto_nc_sm_tv_sfo
     display: \NSFO = \Omega(\Delta L \sigma^2/(N \eps^2) + \Delta L/((1-\beta_{\rm H})\eps))
@@ -782,16 +783,15 @@ cells:
     accounting:
       per_node_oracle_queries: T
       per_node_gossip_rounds: T
-      projection_condition: one stochastic-oracle query and one partial-averaging communication step per
-        round
+      projection_condition: one stochastic-oracle query and one partial-averaging communication step per round
     assumptions:
-    - Each local objective is L-smooth, the initial global objective gap is at most Delta, and each node
-      has an independent unbiased stochastic-gradient oracle with variance at most sigma^2.
-    - The hard instance uses the paper's sun-shaped time-varying graphs and doubly stochastic partial-averaging
-      matrices with beta_H in [0,1-1/N].
+    - Each local objective is L-smooth, the initial global objective gap is at most Delta, and each node has an independent
+      unbiased stochastic-gradient oracle with variance at most sigma^2.
+    - The hard instance uses the paper's sun-shaped time-varying graphs and doubly stochastic partial-averaging matrices
+      with beta_H in [0,1-1/N].
     - Algorithms start from the origin and belong to the paper's partial-averaging, zero-respecting class.
-    - 'The network-dependent term is retained only under the theorem''s coupled round model: after T rounds,
-      each node has made T oracle queries and T gossip steps.'
+    - 'The network-dependent term is retained only under the theorem''s coupled round model: after T rounds, each
+      node has made T oracle queries and T gossip steps.'
     source_original_location: Thm. lower-bound-nc
     source_labels:
     - thm:lower-bound-nc
@@ -810,17 +810,16 @@ cells:
     accounting:
       per_node_oracle_queries: T=K R
       per_node_gossip_rounds: T=K R
-      projection_condition: the prescribed R gradient-accumulation samples are paired with R multi-consensus
-        rounds
+      projection_condition: the prescribed R gradient-accumulation samples are paired with R multi-consensus rounds
     assumptions:
     - Each local objective is L-smooth with initial global objective gap at most Delta, and each stochastic-gradient
       oracle is independent, unbiased, and has variance at most sigma^2.
-    - Every time-varying mixing matrix is doubly stochastic and satisfies the same one-step disagreement
-      bound beta_H in [0,1).
+    - Every time-varying mixing matrix is doubly stochastic and satisfies the same one-step disagreement bound beta_H
+      in [0,1).
     - MC-DSGT starts from a common iterate and uses the theorem's prescribed learning rate and gradient-accumulation/multi-consensus
       length R.
-    - T=K R is simultaneously the number of local stochastic-gradient queries and gossip communications
-      per node; the displayed oracle order is conditional on this paired accounting.
+    - T=K R is simultaneously the number of local stochastic-gradient queries and gossip communications per node;
+      the displayed oracle order is conditional on this paired accounting.
     source_original_location: Thm. MG-DSGT-rate-nc
     source_labels:
     - thm:MG-DSGT-rate-nc
@@ -868,13 +867,11 @@ cells:
     - Restricted LB parameter regime.
     - Aggregate LIFO-to-worst-node normalization.
     assumptions:
-    - There are K_loc finite-sum components per node; the global objective is L-smooth and mu-PL, and
-      the components satisfy the paper's mean-squared smoothness assumption.
-    - The lower bound assumes epsilon < 0.005 Delta and bar_L >= L > mu in the paper's IFO/LIFO algorithm
-      class.
-    - After setting the centralized component count to N K_loc, the aggregate LIFO lower bound is divided
-      by N; it lower-bounds average workload and hence the workload of some worst-case node, not every
-      node individually.
+    - There are K_loc finite-sum components per node; the global objective is L-smooth and mu-PL, and the components
+      satisfy the paper's mean-squared smoothness assumption.
+    - The lower bound assumes epsilon < 0.005 Delta and bar_L >= L > mu in the paper's IFO/LIFO algorithm class.
+    - After setting the centralized component count to N K_loc, the aggregate LIFO lower bound is divided by N; it
+      lower-bounds average workload and hence the workload of some worst-case node, not every node individually.
     scope_source_locations:
     - arXiv:2210.13931, Theorem 7 and Table 4 (aggregate LIFO lower bound).
     source_original_location: Theorem 7; Table 4
@@ -890,12 +887,12 @@ cells:
     caveats:
     - Expected aggregate-LIFO per-node normalization.
     assumptions:
-    - There are K_loc finite-sum components per node; the global objective is L-smooth and mu-PL, and
-      the components satisfy the paper's mean-squared smoothness assumption.
-    - The network is fixed and connected with the paper's symmetric doubly stochastic mixing matrix, and
-      DEAREST+ uses the parameter choices in Theorem 5.
-    - Uniform node-component sampling makes each node's expected share equal to the expected aggregate
-      LIFO count divided by N; this is not an expected-maximum workload bound.
+    - There are K_loc finite-sum components per node; the global objective is L-smooth and mu-PL, and the components
+      satisfy the paper's mean-squared smoothness assumption.
+    - The network is fixed and connected with the paper's symmetric doubly stochastic mixing matrix, and DEAREST+
+      uses the parameter choices in Theorem 5.
+    - Uniform node-component sampling makes each node's expected share equal to the expected aggregate LIFO count
+      divided by N; this is not an expected-maximum workload bound.
     scope_source_locations:
     - arXiv:2210.13931, Corollary 2 and Table 4 (expected aggregate LIFO complexity).
     source_original_location: Corollary 2; Table 4
@@ -910,8 +907,8 @@ cells:
     taxonomy_diagnosis: standard_searchable
   manual_full_reaudit:
     original_cell_id: manual_van_sum_pl_sm_sfo_stat_goss_objective_gap
-    reason: Use the paper's aggregate LIFO claims normalized to per-node oracle workload; the separate
-      computation-round results remain Remark context only.
+    reason: Use the paper's aggregate LIFO claims normalized to per-node oracle workload; the separate computation-round
+      results remain Remark context only.
 - cell_id: agent_van_sum_nc_sm_sfo_stat_goss_sync_ncmp_n_sfo_gradient_norm_finite_sum
   order: 1650.02
   problem_tags:
@@ -924,26 +921,18 @@ cells:
   - GOSS
   - SYNC
   - NCMP
-  measure: \E\|\nabla F(\hat x)\| \le \eps
+  measure: \E\|\nabla F(x_i)\| \le \eps,\ \forall i
   lower_bound:
-    claim_id: manual_arxiv_2210_13931#lb_nc_stat
-    display: \NSFO=\Omega(K_{\rm loc}+\min\{K_{\rm loc}L,\sqrt{K_{\rm loc}/N}\bar L\}\Delta/\eps^2)
+    claim_id: manual_review_arxiv_2210_13931#lb_nc_stat_global_LF
+    display: \NSFO=\Omega(K_{\rm loc}+\min\{K_{\rm loc}L_F,\sqrt{K_{\rm loc}/N}\,\bar L\}\Delta/\eps^2)
     source: 'arXiv:2210.13931: Theorem 3; Table 2; Remark 9'
     caveats:
-    - Aggregate LIFO-to-worst-node normalization.
+    - Global-objective smoothness and DEAREST model.
+    - Restricted finite-sum LB accounting.
     assumptions:
-    - There are K_loc finite-sum components per node, the global objective is L-smooth with initial gap
-      at most Delta, and the components are bar_L-mean-squared smooth.
-    - The theorem accuracy regime is epsilon=O((min{L,bar_L/sqrt(N K_loc)} Delta)^(1/2)) in the paper's
-      IFO/LIFO algorithm class.
-    - After setting the centralized component count to N K_loc, the aggregate LIFO lower bound is divided
-      by N; it lower-bounds average workload and hence the workload of some worst-case node, not every
-      node individually.
-    scope_source_locations:
-    - arXiv:2210.13931, Theorem 3, Table 2, and Remark 9 (aggregate LIFO lower bound and decentralized
-      embedding).
-    - arXiv:2210.13931, Theorem 4 separately lower-bounds computation rounds; its additional serial-depth
-      term is excluded from N_SFO.
+    - There are K_loc components per node; F is L_F-smooth and the components are bar_L-mean-squared smooth.
+    - The static-network, common-initialization, sampling, and algorithm-class restrictions are recorded in the row
+      remarks.
     source_original_location: Theorem 3; Table 2; Remark 9
     source_labels:
     - thm:LFO
@@ -951,33 +940,33 @@ cells:
     source_version: arXiv:2210.13931; pdf_sha256:cb5f429c22c5bde38368d75bcffa9593837944cc312a99b21158605e2aa58b86
     pdf_verified: true
   upper_bound:
-    claim_id: arxiv_2408_09775_faster_adaptive_decentralized_learning_algori#2
-    display: \NSFO=O(K_{\rm loc}^{1/2}\eps^{-2})
-    source: 'arXiv:2408.09775: Theorem 5.5; Remark 5.6'
+    claim_id: manual_review_arxiv_2210_13931#ub_dearest_nc_stat
+    display: \NSFO=O(K_{\rm loc}+\min\{K_{\rm loc}L_F,\sqrt{K_{\rm loc}/N}\,\bar L\}\Delta/\eps^2)
+    source: 'arXiv:2210.13931: Theorem 1; Corollary 1; Table 2'
     caveats:
-    - Prescribed local-batch tuning.
-    evidence_caveats:
-    - 'Search scope: local_385_paper_corpus; not a global literature proof.'
-    - Finite-sum setting.
+    - Global-objective smoothness and DEAREST model.
+    - Expected per-node DEAREST query count.
     assumptions:
-    - The displayed optimal sample order uses b=sqrt(K_loc) and beta_t=b/K_loc.
-    - The adaptive matrices and algorithm parameters satisfy Theorem 2.
-    scope_source_locations:
-    - arXiv:2408.09775, Theorem 2 and the following complexity remark.
-    source_original_location: Thm. 2; finite-sum remark
-    source_labels: []
-    source_version: arXiv:2408.09775; pdf_sha256:96b576e24417ce32424e1c1bca9d0f42100abfc3eca2a11c15bd7e9db0cd4ed4
+    - There are K_loc components per node; F is L_F-smooth and the components are bar_L-mean-squared smooth.
+    - The static-network, common-initialization, sampling, and algorithm-class restrictions are recorded in the row
+      remarks.
+    source_original_location: Theorem 1; Corollary 1; Table 2
+    source_labels:
+    - thm:main
+    - cor:complexity-general
+    - table:nc-2
+    source_version: arXiv:2210.13931; pdf_sha256:cb5f429c22c5bde38368d75bcffa9593837944cc312a99b21158605e2aa58b86
     pdf_verified: true
-  status: GAP
+  status: COND
   agent_cell_verification: data/canonical_cell_verifications/van_sum_nc_sm_sfo_stat_goss_sync_ncmp_n_sfo_gradient_norm_finite_sum.json
   promotion_decision:
-    mode: manual_full_reaudit
+    mode: manual_review_20260912
     strict_ready: true
-    reason: The aggregate LIFO lower bound yields a valid average/worst-node oracle-query lower bound;
-      the stronger computation-round expression is retained only in the counting Remark.
+    reason: The aggregate LIFO lower bound yields a valid average/worst-node oracle-query lower bound; the stronger
+      computation-round expression is retained only in the counting Remark.
     selected_claim_refs:
-    - manual_arxiv_2210_13931#lb_nc_stat
-    - arxiv_2408_09775_faster_adaptive_decentralized_learning_algori#2
+    - manual_review_arxiv_2210_13931#lb_nc_stat_global_LF
+    - manual_review_arxiv_2210_13931#ub_dearest_nc_stat
     blocked_selected_claims: []
   search_evidence:
     source: data/manual_expanded_claims_v2.jsonl
@@ -997,8 +986,15 @@ cells:
     added_at: '2026-07-10T16:12:19+00:00'
   manual_full_reaudit:
     original_cell_id: agent_van_sum_nc_sm_sfo_stat_goss_sync_ncmp_n_sfo_gradient_norm_finite_sum
-    reason: Use the paper's aggregate LIFO lower bound normalized to average/worst-node oracle workload;
-      retain the computation-round theorem as Remark context only.
+    reason: Use the paper's aggregate LIFO lower bound normalized to average/worst-node oracle workload; retain the
+      computation-round theorem as Remark context only.
+  review_complete: true
+  review_resolution_20260912:
+    decision: approved_and_applied
+    reviewer_type: agent_with_user_approval
+    review_date: '2026-09-12'
+    evidence: data/manual_review_decisions_20260912.yaml
+    reason: Replace the weaker unrelated UB with the matching DEAREST+ rate and separate global smoothness L_F.
 - cell_id: agent_van_sto_nc_sm_sfo_stat_goss_sync_ncmp_n_sfo_gradient_norm_general
   order: 1070
   problem_tags:
@@ -1013,22 +1009,19 @@ cells:
   - NCMP
   measure: \E\|\nabla F(\hat x)\| \le \eps
   lower_bound:
-    claim_id: manual_v2_arxiv_2006_08085#lb_full_time
+    claim_id: manual_review_arxiv_2006_08085#lb_noise_query_b1
     display: \NSFO=\Omega(\Delta L\sigma^2/(N\eps^4))
-    source: 'arXiv:2006.08085: Corollary 1'
+    source: 'arXiv:2006.08085: Corollary 1; Appendix Setting 1'
     caveats:
-    - B=1 local-batch normalization.
-    - Zero-respecting LB scope.
-    evidence_caveats:
-    - 'Search scope: local_10000_paper_corpus; not a global literature proof.'
+    - Noise-only zero-respecting LB scope.
+    - Noise-only B=1 query normalization.
     assumptions:
-    - The lower bound is for the paper's zero-respecting gossip algorithm class.
-    - The hard instance uses the theorem's prescribed spectral parameter range.
-    scope_source_locations:
-    - arXiv:2006.08085, algorithm class and Corollary 1.
-    source_original_location: Cor. lower bound
+    - B=1; identical local hard functions on a complete graph isolate the stochastic sample component.
+    - The lower-bound class and small-accuracy stochastic regime are stated in the row remarks.
+    source_original_location: Corollary 1; Appendix Setting 1
     source_labels:
     - corollary lower bound
+    - setting:stochastic
     source_version: arXiv:2006.08085; pdf_sha256:720a7e94166b0472cb105059d7edde5f49706d6a5fed16d23748ea5cfce6a363
     pdf_verified: true
   upper_bound:
@@ -1048,11 +1041,11 @@ cells:
   status: GAP
   agent_cell_verification: data/canonical_cell_verifications/van_sto_nc_sm_sfo_stat_goss_sync_ncmp_n_sfo_gradient_norm_general.json
   promotion_decision:
-    mode: expanded
+    mode: manual_review_20260912
     strict_ready: true
     reason: cell verifier marked promotion_ready=true; included in expanded table
     selected_claim_refs:
-    - manual_v2_arxiv_2006_08085#lb_full_time
+    - manual_review_arxiv_2006_08085#lb_noise_query_b1
     - manual_v2_arxiv_2006_08085#ub_detag_full_time
     blocked_selected_claims: []
   search_evidence:
@@ -1068,8 +1061,15 @@ cells:
       excluded_claims: 2
   manual_full_reaudit:
     original_cell_id: agent_van_sto_nc_sm_sfo_stat_goss_sync_ncmp_n_sfo_gradient_norm_general
-    reason: Restore the complete B=1 decentralized time rate from the lower-bound corollary and DeTAG
-      theorem.
+    reason: Retain the B=1 noise/sample term only; exclude the communication-round spectral branch from the oracle-query
+      count.
+  review_complete: true
+  review_resolution_20260912:
+    decision: approved_and_applied
+    reviewer_type: agent_with_user_approval
+    review_date: '2026-09-12'
+    evidence: data/manual_review_decisions_20260912.yaml
+    reason: Correct stale full-time provenance without adding the communication lower-bound term.
 - cell_id: agent_van_sto_pl_sm_sfo_stat_goss_sync_ncmp_n_sfo_objective_gap_general
   order: 1130
   problem_tags:
@@ -1161,12 +1161,12 @@ cells:
     assumptions:
     - For every M>=6, the hard instance is on the M-node path graph with rho=Theta(M^(-2)).
     - Local objectives are convex and L-smooth, ||x-star|| <= R, and the construction starts at the origin.
-    - Algorithms are deterministic linear-span decentralized first-order methods and the theorem lower
-      bounds the averaged output bar x_S.
-    - The epsilon-complexity expression uses the 1/(rho S^2) branch of min{1,1/(rho S^2)}; smaller S is
-      the constant-error branch.
-    - The per-node normalization substitutes S=Theta(N_total/M) for one local FO call and one gossip step
-      per node per round.
+    - Algorithms are deterministic linear-span decentralized first-order methods and the theorem lower bounds the
+      averaged output bar x_S.
+    - The epsilon-complexity expression uses the 1/(rho S^2) branch of min{1,1/(rho S^2)}; smaller S is the constant-error
+      branch.
+    - The per-node normalization substitutes S=Theta(N_total/M) for one local FO call and one gossip step per node
+      per round.
     scope_source_locations:
     - arXiv:2606.04757, lower-bound method class and Theorem 2.
     source_original_location: Theorem 2 and paragraph following the theorem
@@ -1175,18 +1175,32 @@ cells:
     source_version: arXiv:2606.04757; pdf_sha256:1ea3ae67acc194b325421373cffda4210b4796e01e0918a2ae02ff7c1ea6237b
     pdf_verified: true
   upper_bound:
-    claim_id: null
-    display: Unknown
-    source: /
-    caveats: []
-  status: UB?
+    claim_id: manual_review_arxiv_2606_04757#ub_convex_fo_sigma0
+    display: \NFO=\widetilde O(\sqrt{LR^2/(\rho\eps)})
+    source: 'arXiv:2606.04757: Theorem 1'
+    caveats:
+    - Exact-oracle specialization of the stochastic theorem.
+    - Per-node-to-average convexity transfer.
+    - Coupled query/gossip accounting.
+    - Conditional row-14 matching order.
+    assumptions:
+    - Set sigma=0 in Theorem 1 and normalize the total budget by the number of nodes.
+    - The theorem's fixed symmetric doubly stochastic gossip, bounded-distance, integer-budget, and logarithmic conditions
+      apply.
+    source_original_location: Theorem 1
+    source_labels:
+    - thm:distributed-gossip
+    source_version: arXiv:2606.04757; pdf_sha256:1ea3ae67acc194b325421373cffda4210b4796e01e0918a2ae02ff7c1ea6237b
+    pdf_verified: true
+  status: COND
   agent_cell_verification: data/canonical_cell_verifications/van_sum_c_sm_fo_stat_goss_sync_ncmp_deterministic_regime_linear_span_path_network_n_fo_c79c5a1b_v8.json
   promotion_decision:
-    mode: expanded
+    mode: manual_review_20260912
     strict_ready: true
     reason: cell verifier marked promotion_ready=true; included in expanded table
     selected_claim_refs:
     - kluger2026#2
+    - manual_review_arxiv_2606_04757#ub_convex_fo_sigma0
     blocked_selected_claims: []
   search_evidence:
     source: data/problem_type_search.yaml
@@ -1200,9 +1214,17 @@ cells:
       comparable_upper_bounds: 1
       excluded_claims: 0
   manual_full_reaudit:
-    taxonomy_note: The lower bound is source-faithful only with its path, dimension, initialization, output,
-      method-class, and branch restrictions visible.
+    taxonomy_note: The lower bound is source-faithful only with its path, dimension, initialization, output, method-class,
+      and branch restrictions visible.
     reason: ''
+  review_complete: true
+  review_resolution_20260912:
+    decision: approved_and_applied
+    reviewer_type: agent_with_user_approval
+    review_date: '2026-09-12'
+    evidence: data/manual_review_decisions_20260912.yaml
+    reason: Restore the sigma=0 UB but retain conditional status because the matching LB uses a restricted coupled
+      clock.
 - cell_id: agent_van_sum_sc_sm_fo_stat_goss_sync_ncmp_n_fo_objective_gap_finite_sum
   order: 1490
   problem_tags:
@@ -1228,8 +1250,7 @@ cells:
     caveats:
     - Primal-dual theorem conditions.
     evidence_caveats:
-    - Audit notes contain a stale contradictory sentence saying no decentralized oracle-query theorem
-      is retained.
+    - Audit notes contain a stale contradictory sentence saying no decentralized oracle-query theorem is retained.
     - The paper states iteration complexity, and per-node FO follows from one local gradient per iteration.
     - 'Search scope: local_350_paper_corpus; not a global literature proof.'
     - Finite-sum setting.
@@ -1515,12 +1536,10 @@ cells:
     caveats:
     - Accuracy-dependent consensus projection.
     evidence_caveats:
-    - 'Minor notation issue: the extraction refers to Algorithm 1 as Decentralized Projected GD, while
-      in the supplied TeX the first displayed algorithm is Consensus and the decentralized projected GD
-      algorithm has label alg:decentralized_projected_GD.'
-    - The theorem uses L_max in eps_1; Assumption 3.1 explicitly states only differentiability of f_i,
-      while the proof invokes L_max-smoothness of local components. The extraction correctly records this
-      as an assumption/ambiguity.
+    - 'Minor notation issue: the extraction refers to Algorithm 1 as Decentralized Projected GD, while in the supplied
+      TeX the first displayed algorithm is Consensus and the decentralized projected GD algorithm has label alg:decentralized_projected_GD.'
+    - The theorem uses L_max in eps_1; Assumption 3.1 explicitly states only differentiability of f_i, while the proof
+      invokes L_max-smoothness of local components. The extraction correctly records this as an assumption/ambiguity.
     - 'Search scope: local_10000_paper_corpus; not a global literature proof.'
     - Cell-level comparability/best-bound adjudication is pending.
     - Split unspecified.
@@ -1601,9 +1620,8 @@ cells:
   topology_modifier: general
   manual_full_reaudit:
     original_cell_id: agent_van_sum_sc_sm_fo_tv_goss_sync_ncmp_n_fo_distance_to_optimum_cycle_path
-    reason: Theorem 2 and Corollary 3 cover a general connected reference graph, not only paths or cycles.
-      The paper's own complexity paragraph uses log(1/epsilon), so remove the source-undefined C from
-      the earlier normalization.
+    reason: Theorem 2 and Corollary 3 cover a general connected reference graph, not only paths or cycles. The paper's
+      own complexity paragraph uses log(1/epsilon), so remove the source-undefined C from the earlier normalization.
 - cell_id: agent_van_sto_sc_sm_sfo_stat_goss_sync_ncmp_n_sfo_objective_gap_general
   order: 1170
   problem_tags:
@@ -1635,14 +1653,13 @@ cells:
     - 'Search scope: local_10000_paper_corpus; not a global literature proof.'
     assumptions:
     - F(x)=M^{-1} sum_i f_i(x) with deterministic convex L-smooth local objectives.
-    - Each node has an unbiased stochastic-gradient oracle with conditional variance at most sigma^2;
-      samples are conditionally independent.
+    - Each node has an unbiased stochastic-gradient oracle with conditional variance at most sigma^2; samples are
+      conditionally independent.
     - At x-star, M^{-1} sum_i ||grad f_i(x-star)-grad f(x-star)||^2 <= zeta-star^2.
     - The fixed gossip matrix P is symmetric and doubly stochastic with rho_K=1-lambda_2(P)>0.
-    - The restarted theorem assumes f is mu-strongly convex, Delta_0 >= f(x_0)-f(x-star), and 0 < eps
-      <= Delta_0.
-    - The displayed count is per-node after dividing the theorem's aggregate sample budget by M; each
-      T_s=N_s/(M B_s) is a positive integer.
+    - The restarted theorem assumes f is mu-strongly convex, Delta_0 >= f(x_0)-f(x-star), and 0 < eps <= Delta_0.
+    - The displayed count is per-node after dividing the theorem's aggregate sample budget by M; each T_s=N_s/(M B_s)
+      is a positive integer.
     source_original_location: Theorem 5; Algorithm 4
     source_labels:
     - thm:strongly-convex-restart
@@ -1672,8 +1689,8 @@ cells:
   manual_full_reaudit:
     original_cell_id: agent_van_sto_sc_sm_sfo_stat_goss_sync_ncmp_n_sfo_objective_gap_general
     reason: Paper M is the worker count and the theorem reports aggregate samples.
-    taxonomy_note: The objective is a deterministic node aggregate; SFO records the unbiased stochastic-gradient
-      oracle, not explicit local finite-sum component sampling.
+    taxonomy_note: The objective is a deterministic node aggregate; SFO records the unbiased stochastic-gradient oracle,
+      not explicit local finite-sum component sampling.
 - cell_id: agent_van_sto_sc_sm_sfo_stat_goss_sync_ncmp_n_sfo_distance_to_optimum_directed
   order: 1150
   problem_tags:
@@ -1738,8 +1755,8 @@ cells:
   manual_atomic_adjudication:
     atomic_evidence_confirmed: true
     claim_id: arxiv_2005_07785_s_addopt_decentralized_stochastic_first_order#1
-    reason: The formal objective is a deterministic distributed aggregate; stochasticity enters only through
-      the unbiased local oracle, so the objective tag is SUM.
+    reason: The formal objective is a deterministic distributed aggregate; stochasticity enters only through the unbiased
+      local oracle, so the objective tag is SUM.
 - cell_id: manual_reaudit_van_sum_sc_sm_sfo_stat_goss_vr_extra
   order: 1160
   problem_tags:
@@ -1768,8 +1785,7 @@ cells:
     - Cross-paper search closure is pending; row uses verified local-corpus evidence.
     - Finite-sum setting.
     assumptions:
-    - For this paper, kappa_s,VR equals mu^{-1} times the maximum across nodes of the mean component smoothness
-      constant.
+    - For this paper, kappa_s,VR equals mu^{-1} times the maximum across nodes of the mean component smoothness constant.
     source_original_location: Corollary acc-corollary1
     source_labels:
     - acc-corollary1
@@ -1797,8 +1813,7 @@ cells:
       excluded_claims: 1
   manual_full_reaudit:
     original_cell_id: manual_reaudit_van_sum_sc_sm_sfo_stat_goss_vr_extra
-    reason: Normalize the paper's local finite-sum size n to K_loc and its node count m to the table's
-      n.
+    reason: Normalize the paper's local finite-sum size n to K_loc and its node count m to the table's n.
 - cell_id: agent_van_sum_sc_sm_sfo_stat_goss_sync_ncmp_n_sfo_distance_to_optimum_finite_sum
   order: 1590
   problem_tags:
@@ -1811,7 +1826,7 @@ cells:
   - GOSS
   - SYNC
   - NCMP
-  measure: \|\hat x-x^\star\|^2 \le \eps
+  measure: \E[\|\hat x-x^\star\|^2] \le \eps
   lower_bound:
     claim_id: null
     display: Unknown
@@ -1859,6 +1874,12 @@ cells:
   manual_full_reaudit:
     original_cell_id: agent_van_sum_sc_sm_sfo_stat_goss_sync_ncmp_n_sfo_distance_to_optimum_finite_sum
     reason: Normalize the local finite-sum size to K_loc.
+  review_resolution:
+    decision: restore_missing_expectation
+    reviewer_type: agent
+    evidence: outputs/reports/row60_resolution_20260907/rows17_28_dispositions.json
+    reason: The retained GT-SVRG proof controls expected consensus, optimality and tracking squared errors; no pathwise
+      guarantee is inferred.
 - cell_id: agent_van_sum_sc_sm_sfo_tv_goss_sync_ncmp_n_sfo_distance_to_optimum_finite_sum
   order: 1660.02
   problem_tags:
@@ -1885,10 +1906,10 @@ cells:
     evidence_caveats:
     - Nonconvex theorem and corollary statements are not visible enough to certify complete coverage.
     - 'Search scope: local_385_paper_corpus; not a global literature proof.'
-    - arxiv_2402_02490_decentralized_finite_sum_optimization_over_ti#1 comes from a paper with paper-level
-      gate needs_review; the selected claim itself i...
-    - arxiv_2402_02490_decentralized_finite_sum_optimization_over_ti#1 has paper quality=needs_review;
-      keep theorem caveats.
+    - arxiv_2402_02490_decentralized_finite_sum_optimization_over_ti#1 comes from a paper with paper-level gate needs_review;
+      the selected claim itself i...
+    - arxiv_2402_02490_decentralized_finite_sum_optimization_over_ti#1 has paper quality=needs_review; keep theorem
+      caveats.
     - Finite-sum setting.
     source_original_location: Cor. adom+_conv; Table complexity_str_convex
     source_labels:
@@ -2002,8 +2023,7 @@ cells:
   manual_atomic_adjudication:
     atomic_evidence_confirmed: true
     claim_id: arxiv_2312_11861_a_proximal_gradient_method_with_probabilistic#1
-    reason: The theorem supports a strongly convex composite objective; the total objective is classified
-      NS.
+    reason: The theorem supports a strongly convex composite objective; the total objective is classified NS.
 - cell_id: agent_van_sum_sc_ns_fo_stat_goss_sync_ncmp_n_fo_distance_to_optimum_general_manual_variant_2
   order: 1440
   problem_tags:
@@ -2065,9 +2085,8 @@ cells:
       excluded_claims: 1
   manual_full_reaudit:
     original_cell_id: agent_van_sum_sc_ns_fo_stat_goss_sync_ncmp_n_fo_distance_to_optimum_general
-    reason: Report the standard fixed-parameter epsilon-order of the theorem's geometric convergence;
-      the source C is an initial Lyapunov prefactor and contributes only an additive constant inside the
-      logarithm.
+    reason: Report the standard fixed-parameter epsilon-order of the theorem's geometric convergence; the source C
+      is an initial Lyapunov prefactor and contributes only an additive constant inside the logarithm.
   manual_id_correction:
     original_duplicate_cell_id: agent_van_sum_sc_ns_fo_stat_goss_sync_ncmp_n_fo_distance_to_optimum_general
     variant: 2
@@ -2085,37 +2104,40 @@ cells:
   - NCMP
   - COMP
   - PROX
-  measure: \E[\|\tilde{x}_i - x^\star\|^2] \le \eps
+  measure: \E\|\tilde x_i^T-x^\star\|^2\le\eps,\ \forall i
   lower_bound:
     claim_id: null
     display: Unknown
     source: /
     caveats: []
   upper_bound:
-    claim_id: arxiv_2106_14075_decentralized_composite_optimization_in_stoch#1
-    display: \NFO = O(\log(1/\eps))
-    source: 'arXiv:2106.14075: Equation (21)'
+    claim_id: manual_review_arxiv_2106_14075#ub_sc_weighted_local
+    display: \NFO=O(\log(1/\eps))
+    source: 'arXiv:2106.14075: Corollary 1; Equation (21)'
     caveats:
     - Exact prox side access.
-    evidence_caveats:
-    - Covered claims 2-4 are incorrectly demoted from N_FO oracle claims.
-    - 'Search scope: local_350_paper_corpus; not a global literature proof.'
-    - Split from mixed-tag source row `agent_van_sum_sc_sm_ns_fo_tv_goss_sync_ncmp_n_fo_distance_to_optimum_general`;
-      theorem evidence is reused for this atomic tag row.
-    - for any fixed admissible source stepsize, with constants depending on that stepsize and mu
-    source_original_location: Corollary 1, eq. (linear-conv)
+    - DDA composite model and stepsizes.
+    - Independent random doubly stochastic mixing.
+    - Weighted local DDA output.
+    - Fixed-parameter DDA order and initialization.
+    assumptions:
+    - Shared closed convex proximable regularizer h, exact gradients/prox, common initialization, and both source
+      stepsize restrictions.
+    - Independent random undirected doubly stochastic mixing with the source second-moment contraction.
+    source_original_location: Corollary 1; Equation (21)
     source_labels:
+    - inexact_thm
     - eq:linear-conv
     source_version: arXiv:2106.14075; pdf_sha256:80162d25ae54482ae9d4551d1cd5d3f3f719bd980761c6b7c8d40a4e8a7664bb
     pdf_verified: true
   status: LB?
   agent_cell_verification: data/canonical_cell_verifications/van_sum_sc_sm_ns_fo_tv_goss_sync_ncmp_n_fo_distance_to_optimum_general.json
   promotion_decision:
-    mode: expanded
+    mode: manual_review_20260912
     strict_ready: true
     reason: cell verifier marked promotion_ready=true; included in expanded table
     selected_claim_refs:
-    - arxiv_2106_14075_decentralized_composite_optimization_in_stoch#1
+    - manual_review_arxiv_2106_14075#ub_sc_weighted_local
     blocked_selected_claims: []
   search_evidence:
     source: data/problem_type_search.yaml
@@ -2143,8 +2165,16 @@ cells:
   manual_atomic_adjudication:
     atomic_evidence_confirmed: true
     claim_id: arxiv_2106_14075_decentralized_composite_optimization_in_stoch#1
-    reason: The source gives a strongly convex composite result over stochastic time-varying networks;
-      the total objective is NS.
+    reason: The source gives a strongly convex composite result over stochastic time-varying networks; the total objective
+      is NS.
+  review_complete: true
+  review_resolution_20260912:
+    decision: approved_and_applied
+    reviewer_type: agent_with_user_approval
+    review_date: '2026-09-12'
+    evidence: data/manual_review_decisions_20260912.yaml
+    reason: Make the output, shared regularizer, stochastic network, stepsizes, prefactor, and counting assumptions
+      explicit.
 - cell_id: agent_van_sum_sc_ns_subg_stat_goss_sync_ncmp_n_subg_objective_gap_general
   order: 1450
   problem_tags:
@@ -2170,8 +2200,8 @@ cells:
     caveats: []
     evidence_caveats:
     - 'Search scope: local_10000_paper_corpus; not a global literature proof.'
-    - arxiv_1904_09015_decentralized_and_parallel_primal_and_dual_ac#3 has paper quality=needs_review;
-      keep theorem caveats.
+    - arxiv_1904_09015_decentralized_and_parallel_primal_and_dual_ac#3 has paper quality=needs_review; keep theorem
+      caveats.
     source_original_location: Table tab:DetPrimeOr, SC nonsmooth
     source_labels:
     - tab:DetPrimeOr
@@ -2254,8 +2284,8 @@ cells:
       excluded_claims: 0
   manual_full_reaudit:
     original_cell_id: agent_van_sum_c_sm_fo_stat_goss_sync_ncmp_n_fo_objective_gap_directed
-    reason: Separate the theorem's network factor from its DAGP stepsize and auxiliary analysis parameter;
-      restore the source's initialization coefficient as C_0 and retain the source's C2 notation.
+    reason: Separate the theorem's network factor from its DAGP stepsize and auxiliary analysis parameter; restore
+      the source's initialization coefficient as C_0 and retain the source's C2 notation.
 - cell_id: agent_van_sum_c_sm_fo_tv_goss_sync_ncmp_n_fo_objective_gap_general
   order: 1330
   problem_tags:
@@ -2286,8 +2316,8 @@ cells:
     assumptions:
     - Mixing is doubly stochastic and satisfies Assumption 3.
     - A finite window parameter gamma gives sigma_gamma below one.
-    - 'Corollary 3 uses multiple consensus: each gradient-oracle iteration performs several communication
-      rounds, which are excluded from the displayed N_FO count.'
+    - 'Corollary 3 uses multiple consensus: each gradient-oracle iteration performs several communication rounds,
+      which are excluded from the displayed N_FO count.'
     scope_source_locations:
     - arXiv:2104.02596, Assumption 3, Theorem 1, and Corollary 3.
     - arXiv:2104.02596, PDF-visible Theorem 1 and Corollary 3.
@@ -2329,10 +2359,29 @@ cells:
   - NCMP
   measure: \E[F(x_i)-F^\star] \le \eps,\ \forall i
   lower_bound:
-    claim_id: null
-    display: Unknown
-    source: /
-    caveats: []
+    claim_id: manual_review_arxiv_2606_04757#lb_noise_query_per_node
+    display: \NSFO=\Omega(\sigma^2R^2/(N\eps^2))
+    source: 'arXiv:2606.04757: Paragraph following Theorem 2'
+    supporting_sources:
+    - source: 'arXiv:1009.0571: Theorem 1'
+      role: primary stochastic-oracle lower bound
+      pdf_path: tmp/pdfs/statement_locations_20260912/arxiv_1009_0571.pdf
+      pdf_sha256: 6b6e50726da01a37ac2079a06f9544945e65bbbcab708308f7d2bbb1b6e23a12
+      pdf_pages:
+      - 6
+    caveats:
+    - Noise-only convex oracle lower bound.
+    - Network term excluded from row 33 LB.
+    assumptions:
+    - Convex smooth stochastic first-order model with radius R, positive noise scale sigma, and total budget N_tot=NQ.
+    - The decentralized special-case projection permits free gossip and uses a uniform per-node cap or worst-node
+      workload.
+    source_original_location: Paragraph following Theorem 2
+    source_labels:
+    - thm:linear-span-lower-bound
+    - classical-stochastic-lower-bound
+    source_version: arXiv:2606.04757; pdf_sha256:1ea3ae67acc194b325421373cffda4210b4796e01e0918a2ae02ff7c1ea6237b
+    pdf_verified: true
   upper_bound:
     claim_id: kluger2026#5
     display: \NSFO = \widetilde O(\sigma^2 R^2/(N\eps^2)+\sqrt{L R^2/(\rho_{\rm K}\eps)})
@@ -2348,27 +2397,27 @@ cells:
     - 'Search scope: local_10000_paper_corpus; not a global literature proof.'
     - Warm-start/initialization restricted.
     assumptions:
-    - Same deterministic convex L-smooth node-sum and unbiased bounded-variance stochastic oracle as the
-      setup theorem.
+    - Same deterministic convex L-smooth node-sum and unbiased bounded-variance stochastic oracle as the setup theorem.
     - R^2 >= E||bar U_{.,1}-x-star||^2.
     - (E||U-bar U||_F^2)^(1/2) <= 2^(-16) R/T.
     - tau(2+3 L S_T^eta)(E||U-bar U||_F^2)^(1/2) <= 2^(-24) R/T^3.
     - B is chosen by the theorem and T=N/(M B) is a positive integer.
     - The displayed count is per-node after dividing the total sample budget by M.
-    - At x-star, M^{-1} sum_i ||grad f_i(x-star)-grad f(x-star)||^2 <= zeta-star^2; this is optimum-local
-      rather than uniform heterogeneity.
+    - At x-star, M^{-1} sum_i ||grad f_i(x-star)-grad f(x-star)||^2 <= zeta-star^2; this is optimum-local rather than
+      uniform heterogeneity.
     source_original_location: Theorem 6
     source_labels:
     - thm:warm-start-distributed-gossip
     source_version: arXiv:2606.04757; pdf_sha256:1ea3ae67acc194b325421373cffda4210b4796e01e0918a2ae02ff7c1ea6237b
     pdf_verified: true
-  status: LB?
+  status: GAP
   agent_cell_verification: data/canonical_cell_verifications/van_sto_c_sm_sfo_stat_goss_sync_ncmp_auxiliary_restart_epoch_initialization_disagreemen_a4e48d2e_v8.json
   promotion_decision:
-    mode: expanded
+    mode: manual_review_20260912
     strict_ready: true
     reason: cell verifier marked promotion_ready=true; included in expanded table
     selected_claim_refs:
+    - manual_review_arxiv_2606_04757#lb_noise_query_per_node
     - kluger2026#5
     blocked_selected_claims: []
   search_evidence:
@@ -2385,8 +2434,15 @@ cells:
   manual_full_reaudit:
     original_cell_id: agent_van_sto_c_sm_sfo_stat_goss_sync_ncmp_auxiliary_restart_epoch_initialization_disagreemen_a4e48d2e
     reason: Paper M is the worker count and must be normalized to n.
-    taxonomy_note: The warm-start epoch has a deterministic node-sum objective and stochastic oracle;
-      the initialization conditions are theorem hypotheses, not an informal warm-start label.
+    taxonomy_note: The warm-start epoch has a deterministic node-sum objective and stochastic oracle; the initialization
+      conditions are theorem hypotheses, not an informal warm-start label.
+  review_complete: true
+  review_resolution_20260912:
+    decision: approved_and_applied
+    reviewer_type: agent_with_user_approval
+    review_date: '2026-09-12'
+    evidence: data/manual_review_decisions_20260912.yaml
+    reason: Promote only the classical stochastic-oracle noise term; keep the coupled-clock network term excluded.
 - cell_id: agent_van_sum_c_ns_fo_stat_goss_sync_ncmp_n_fo_objective_gap_general
   order: 1340.02
   problem_tags:
@@ -2416,11 +2472,11 @@ cells:
     - Multi-consensus; local-gradient count only.
     evidence_caveats:
     - 'Search scope: local_10000_paper_corpus; not a global literature proof.'
-    - Split from mixed-tag source row `agent_van_sum_c_sm_ns_fo_stat_goss_sync_ncmp_n_fo_objective_gap_general`;
-      theorem evidence is reused for this atomic tag row.
+    - Split from mixed-tag source row `agent_van_sum_c_sm_ns_fo_stat_goss_sync_ncmp_n_fo_objective_gap_general`; theorem
+      evidence is reused for this atomic tag row.
     assumptions:
-    - Each gradient-oracle iteration performs three FastMix phases, each with a network-dependent number
-      of communication rounds; these rounds are excluded from the displayed N_FO count.
+    - Each gradient-oracle iteration performs three FastMix phases, each with a network-dependent number of communication
+      rounds; these rounds are excluded from the displayed N_FO count.
     source_original_location: Theorem 3; Corollary 4
     source_labels:
     - thm:main1
@@ -2461,8 +2517,8 @@ cells:
   manual_atomic_adjudication:
     atomic_evidence_confirmed: true
     claim_id: arxiv_2312_15845_optimal_decentralized_composite_optimization#2
-    reason: The total composite objective is convex and nonsmooth; FO counts smooth-part gradients with
-      exact proximal side access.
+    reason: The total composite objective is convex and nonsmooth; FO counts smooth-part gradients with exact proximal
+      side access.
 - cell_id: manual_reaudit_van_sum_c_ns_sfo_stat_goss_objective_gap
   order: 1010
   problem_tags:
@@ -2605,16 +2661,22 @@ cells:
     source: /
     caveats: []
   upper_bound:
-    claim_id: manual_arxiv_2112_10389#ub_c_ns_tv
-    display: \NSFO=\widetilde O(K_{\rm loc}+(\Delta/\eps)^{1/q_{\rm DPS}})
-    source: 'arXiv:2112.10389: Theorems 2 and 3; Algorithm 1'
+    claim_id: manual_review_arxiv_2112_10389#ub_c_ns_tv_full_constant
+    display: \NSFO=\widetilde O(K_{\rm loc}+(C_{\rm DPS}/\eps)^{1/q_{\rm DPS}})
+    source: 'arXiv:2112.10389: Theorems 2 and 3; Remark 1; Algorithm 1'
     caveats:
     - Exact prox side access.
-    - Multi-consensus; local-gradient count only.
-    evidence_caveats:
-    - An exact proximal map for the convex nonsmooth regularizer is additional side access.
-    source_original_location: Thm. prox-svrg; Remark after Thm. inexact; Algorithm DPSVRG
-    source_labels: []
+    - DPSVRG full constant and contraction regime.
+    - DPSVRG sample and side-operation count.
+    - Virtual centralized DPSVRG output.
+    assumptions:
+    - Componentwise smooth finite sum and a shared proximable convex regularizer; exact prox and source error bounds.
+    - Time-varying b-connected mixing and fixed source parameters satisfying the stated contraction restrictions.
+    source_original_location: Theorems 2 and 3; Remark 1; Algorithm 1
+    source_labels:
+    - thm:inexact
+    - thm:prox-svrg
+    - Algorithm DPSVRG
     source_version: arXiv:2112.10389; pdf_sha256:356c735e92ea5b0a3e99b1a52c168907b9c1dbc87de8d855d9f67cee36a4cea6
     pdf_verified: true
   status: LB?
@@ -2624,6 +2686,13 @@ cells:
   manual_full_reaudit:
     original_cell_id: manual_van_sum_c_ns_sfo_tv_goss_objective_gap
     reason: Use the theorem's virtual centralized target and normalize local finite-sum size.
+  review_complete: true
+  review_resolution_20260912:
+    decision: approved_and_applied
+    reviewer_type: agent_with_user_approval
+    review_date: '2026-09-12'
+    evidence: data/manual_review_decisions_20260912.yaml
+    reason: Replace the unsupported Delta-only numerator by the theorem's full C_DPS constant.
 - cell_id: agent_van_sum_c_ns_subg_stat_goss_sync_ncmp_n_subg_objective_gap_cycle_path
   order: 1200
   problem_tags:
@@ -2867,8 +2936,8 @@ cells:
     caveats: []
     evidence_caveats:
     - 'Search scope: local_10000_paper_corpus; not a global literature proof.'
-    - arxiv_1806_07081_distributed_optimization_over_directed_graphs#1 has paper quality=needs_review;
-      keep theorem caveats.
+    - arxiv_1806_07081_distributed_optimization_over_directed_graphs#1 has paper quality=needs_review; keep theorem
+      caveats.
     - Directed row-stochastic graph.
     source_original_location: Thm. 5 (Convergence bound) and Corollary 1(b)
     source_labels: []
@@ -2973,8 +3042,8 @@ cells:
     - Generalized smoothness; relative dissimilarity.
     evidence_caveats:
     - 'Search scope: local_10000_paper_corpus; not a global literature proof.'
-    - arxiv_2601_03566_provably_convergent_decentralized_optimizatio#1 has paper quality=needs_review;
-      keep theorem caveats.
+    - arxiv_2601_03566_provably_convergent_decentralized_optimizatio#1 has paper quality=needs_review; keep theorem
+      caveats.
     - Directed row-stochastic graph.
     source_original_location: Thm. epsilon_convergence
     source_labels:
@@ -3114,8 +3183,8 @@ cells:
       excluded_claims: 0
   manual_full_reaudit:
     original_cell_id: agent_van_sum_nc_sm_fo_tv_goss_sync_ncmp_n_fo_gradient_norm_squared_general
-    reason: Rename the theorem's explicit problem-, initialization-, stepsize-, and network-dependent
-      coefficient instead of presenting it as a generic constant.
+    reason: Rename the theorem's explicit problem-, initialization-, stepsize-, and network-dependent coefficient
+      instead of presenting it as a generic constant.
 - cell_id: agent_van_sto_nc_sm_sfo_stat_goss_sync_ncmp_higher_order_smoothness_n_sfo_distance_to_optimum_general
   order: 1060
   problem_tags:
@@ -3183,8 +3252,8 @@ cells:
   manual_atomic_adjudication:
     atomic_evidence_confirmed: true
     claim_id: arxiv_2510_01377_demuon_a_decentralized_muon_for_matrix_optimi#2
-    reason: The formal objective is a deterministic distributed aggregate; stochasticity enters only through
-      the unbiased local oracle, so the objective tag is SUM.
+    reason: The formal objective is a deterministic distributed aggregate; stochasticity enters only through the unbiased
+      local oracle, so the objective tag is SUM.
 - cell_id: manual_van_sum_nc_sm_sfo_tv_goss_stationarity
   order: 200010
   problem_tags:
@@ -3203,17 +3272,30 @@ cells:
     display: Unknown
     source: /
     caveats: []
+    review_resolution:
+      decision: excluded_from_current_main_claim
+      claim_id: arxiv_2402_02490_decentralized_finite_sum_optimization_over_ti#4
+      reason: The stated direct term exists, but uniform sampling and the support-progress argument do not establish
+        the declared maximum-node oracle class. No claim that the source theorem is false or no LB exists.
+      evidence: outputs/reports/row60_resolution_20260907/row48_review.json
+      reviewer_type: agent
+      review_date: '2026-09-07'
   upper_bound:
     claim_id: manual_arxiv_2402_02490#ub_nc_tv
-    display: \NSFO=O(K_{\rm loc}+\sqrt{K_{\rm loc}}\bar L\Delta/\eps^2)
+    display: \NSFO=O(K_{\rm loc}+\sqrt{K_{\rm loc}}L_{\rm rms,loc}\Delta/\eps^2)
     source: 'arXiv:2402.02490: Theorem 4.3; Corollary 4.5'
-    caveats: []
+    caveats:
+    - Node-local RMS component smoothness.
+    - Expected local GT-PAGE query count.
     source_original_location: Thm. nonconvex-setup; Cor. nonconvex_setup
     source_labels:
     - thm:nonconvex-setup
     - cor:nonconvex_setup
     source_version: arXiv:2402.02490; pdf_sha256:78e3ba938d129d3208d369cc946dc72159b615b9dc578f7fe7da2f613d1fd6fb
     pdf_verified: true
+    assumptions:
+    - Use the per-node RMS component smoothness assumption and network-average objective of the nonconvex proof; count
+      expected local oracle evaluations.
   status: LB?
   manual_research:
     research_status: exact_evidence_found
@@ -3221,6 +3303,7 @@ cells:
   manual_full_reaudit:
     original_cell_id: manual_van_sum_nc_sm_sfo_tv_goss_stationarity
     reason: Normalize the local finite-sum size to K_loc.
+  review_complete: false
 - cell_id: manual_van_sum_nc_ns_sfo_stat_goss_fixed_point
   order: 200050
   problem_tags:
@@ -3249,8 +3332,8 @@ cells:
     - Exact prox side access.
     - ProxGT stochastic conditions.
     evidence_caveats:
-    - The total objective is composite and nonsmooth; an exact proximal map for the regularizer is additional
-      side access.
+    - The total objective is composite and nonsmooth; an exact proximal map for the regularizer is additional side
+      access.
     assumptions:
     - Component gradients satisfy mean-squared smoothness.
     - Sampling is unbiased with bounded variance.
@@ -3297,8 +3380,8 @@ cells:
     evidence_caveats:
     - Claims 1 and 3 need oracle-measure metadata review.
     - 'Search scope: local_10000_paper_corpus; not a global literature proof.'
-    - arxiv_1912_12110_linear_convergence_for_distributed_optimizati#2 has paper quality=needs_review;
-      keep theorem caveats.
+    - arxiv_1912_12110_linear_convergence_for_distributed_optimizati#2 has paper quality=needs_review; keep theorem
+      caveats.
     - Split from mixed-tag source row `agent_van_sum_nc_pl_sm_fo_stat_goss_sync_ncmp_n_fo_objective_gap_general`;
       theorem evidence is reused for this atomic tag row.
     source_original_location: Thm. 2 (label nonconvex:thm-ft), equation nonconvex:thm-ft-equ1
@@ -3465,12 +3548,10 @@ cells:
     caveats:
     - Effective-network-rate normalization.
     evidence_caveats:
-    - The algorithm-specific lower bound is inventoried but is not clearly promotable as a universal main-table
-      LB.
+    - The algorithm-specific lower bound is inventoried but is not clearly promotable as a universal main-table LB.
     - The tau=1 appendix rate is a special-case statement with omitted derivation.
     - 'Search scope: local_385_paper_corpus; not a global literature proof.'
-    source_original_location: Thm. 1 / thm:summary, Complexity Estimates (Upper Bounds), Strongly-Convex
-      case
+    source_original_location: Thm. 1 / thm:summary, Complexity Estimates (Upper Bounds), Strongly-Convex case
     source_labels:
     - thm:summary
     source_version: arXiv:2003.10422; pdf_sha256:3af39f52e161605495a1356ce0e85fb0d34a5cf265432156eab04ede00859835
@@ -3480,8 +3561,8 @@ cells:
   promotion_decision:
     mode: expanded
     strict_ready: false
-    reason: selected UB is verified, but paper-level extraction coverage remains uncertain; retain only
-      behind expanded-table reviewer gate
+    reason: selected UB is verified, but paper-level extraction coverage remains uncertain; retain only behind expanded-table
+      reviewer gate
     selected_claim_refs:
     - arxiv_2003_10422_a_unified_theory_of_decentralized_sgd_with_ch#3
     blocked_selected_claims: []
@@ -3503,8 +3584,8 @@ cells:
     added_at: '2026-07-10T16:12:19+00:00'
   manual_full_reaudit:
     original_cell_id: agent_van_sto_sc_sm_sfo_tv_goss_sync_ncmp_n_sfo_distance_to_optimum_general
-    reason: Use the paper's effective per-iteration network rate delta_net=p/tau; this algebraically removes
-      the mixing-window symbol without suppressing network dependence.
+    reason: Use the paper's effective per-iteration network rate delta_net=p/tau; this algebraically removes the mixing-window
+      symbol without suppressing network dependence.
 - cell_id: agent_van_sto_sc_ns_sfo_stat_goss_sync_ncmp_n_sfo_objective_gap_general
   order: 1610.02
   problem_tags:
@@ -3531,8 +3612,8 @@ cells:
     - High-probability guarantee.
     evidence_caveats:
     - 'Search scope: local_350_paper_corpus; not a global literature proof.'
-    - arxiv_1904_09015_decentralized_and_parallel_primal_and_dual_ac#7 has paper quality=needs_review;
-      keep theorem caveats.
+    - arxiv_1904_09015_decentralized_and_parallel_primal_and_dual_ac#7 has paper quality=needs_review; keep theorem
+      caveats.
     - Split from mixed-tag source row `agent_van_sum_sto_sc_ns_sfo_stat_goss_sync_ncmp_n_sfo_objective_gap_general`;
       theorem evidence is reused for this atomic tag row.
     source_original_location: Table T:stoch_prima_oracle, SC nonsmooth
@@ -3578,8 +3659,8 @@ cells:
   manual_atomic_adjudication:
     atomic_evidence_confirmed: true
     claim_id: arxiv_1904_09015_decentralized_and_parallel_primal_and_dual_ac#7
-    reason: The stochastic unbiased oracle acts on local expected strongly convex nonsmooth objectives,
-      so the atomic objective tag is STO.
+    reason: The stochastic unbiased oracle acts on local expected strongly convex nonsmooth objectives, so the atomic
+      objective tag is STO.
 - cell_id: manual_van_sto_sc_ns_sfo_tv_goss_objective_gap
   order: 200030
   problem_tags:
@@ -3599,13 +3680,20 @@ cells:
     source: /
     caveats: []
   upper_bound:
-    claim_id: manual_arxiv_2508_09029#ub_sc_tv
-    display: \NSFO = O((M+\sigma)^2/(\mu\eps))
-    source: 'arXiv:2508.09029: Theorem 2'
-    caveats: []
-    source_original_location: Thm. th:st_mntn
+    claim_id: manual_review_arxiv_2508_09029#ub_sc_tv_phi_oracle
+    display: \NSFO=O((M_\phi+\sigma)^2/(\mu\eps))
+    source: 'arXiv:2508.09029: Theorem 2; Algorithm 1; Appendix C'
+    caveats:
+    - Known-quadratic nonsmooth oracle model.
+    - Source time-varying contraction condition.
+    - Fixed-network leading row-55 order.
+    assumptions:
+    - F_i=phi_i+mu||x||^2/2 with a stochastic oracle only for convex phi_i and an exact known quadratic term.
+    - The source's time-varying network contraction and conditional oracle assumptions hold.
+    source_original_location: Theorem 2; Algorithm 1; Appendix C
     source_labels:
     - th:st_mntn
+    - Algorithm 1
     source_version: arXiv:2508.09029; pdf_sha256:42534dc7640529b72f7b0405f1dce73a5a5ebc769836fbbe21c90f62834eea12
     pdf_verified: true
   status: LB?
@@ -3614,8 +3702,15 @@ cells:
     taxonomy_diagnosis: standard_searchable
   manual_full_reaudit:
     original_cell_id: manual_van_sto_sc_ns_sfo_tv_goss_objective_gap
-    reason: Use the theorem's network-average output; Proposition st_mntn remains excluded because it
-      is algorithm-specific and does not quantify over a decentralized oracle class.
+    reason: Use the theorem's network-average output; Proposition st_mntn remains excluded because it is algorithm-specific
+      and does not quantify over a decentralized oracle class.
+  review_complete: true
+  review_resolution_20260912:
+    decision: approved_and_applied
+    reviewer_type: agent_with_user_approval
+    review_date: '2026-09-12'
+    evidence: data/manual_review_decisions_20260912.yaml
+    reason: Clarify the row-specific phi oracle, network contraction, and fixed-network small-accuracy leading order.
 - cell_id: agent_van_sto_c_sm_sfo_tv_goss_sync_ncmp_n_sfo_objective_gap_general
   order: 1620.02
   problem_tags:
@@ -3636,14 +3731,13 @@ cells:
     caveats: []
   upper_bound:
     claim_id: arxiv_2003_10422_a_unified_theory_of_decentralized_sgd_with_ch#2
-    display: \NSFO=O(R^2(\sigma^2/(N\eps^2)+\sqrt{L}(\bar\zeta+\sigma\sqrt{\delta_{\rm net}})/(\delta_{\rm
-      net}\eps^{3/2})+L/(\delta_{\rm net}\eps)))
+    display: \NSFO=O(R^2(\sigma^2/(N\eps^2)+\sqrt{L}(\bar\zeta+\sigma\sqrt{\delta_{\rm net}})/(\delta_{\rm net}\eps^{3/2})+L/(\delta_{\rm
+      net}\eps)))
     source: 'arXiv:2003.10422: Theorem 2'
     caveats:
     - Effective-network-rate normalization.
     evidence_caveats:
-    - The algorithm-specific lower bound is inventoried but is not clearly promotable as a universal main-table
-      LB.
+    - The algorithm-specific lower bound is inventoried but is not clearly promotable as a universal main-table LB.
     - The tau=1 appendix rate is a special-case statement with omitted derivation.
     - 'Search scope: local_385_paper_corpus; not a global literature proof.'
     source_original_location: Thm. 1 / thm:summary, Complexity Estimates (Upper Bounds), Convex case
@@ -3656,8 +3750,8 @@ cells:
   promotion_decision:
     mode: expanded
     strict_ready: false
-    reason: selected UB is verified, but paper-level extraction coverage remains uncertain; retain only
-      behind expanded-table reviewer gate
+    reason: selected UB is verified, but paper-level extraction coverage remains uncertain; retain only behind expanded-table
+      reviewer gate
     selected_claim_refs:
     - arxiv_2003_10422_a_unified_theory_of_decentralized_sgd_with_ch#2
     blocked_selected_claims: []
@@ -3679,8 +3773,8 @@ cells:
     added_at: '2026-07-10T16:12:19+00:00'
   manual_full_reaudit:
     original_cell_id: agent_van_sto_c_sm_sfo_tv_goss_sync_ncmp_n_sfo_objective_gap_general
-    reason: Use the paper's effective per-iteration network rate delta_net=p/tau; this algebraically removes
-      the mixing-window symbol without suppressing network dependence.
+    reason: Use the paper's effective per-iteration network rate delta_net=p/tau; this algebraically removes the mixing-window
+      symbol without suppressing network dependence.
 - cell_id: agent_van_sto_c_ns_sfo_stat_goss_sync_ncmp_n_sfo_objective_gap_general
   order: 1600.02
   problem_tags:
@@ -3693,30 +3787,34 @@ cells:
   - GOSS
   - SYNC
   - NCMP
-  measure: F(\hat x)-F^\star \le \eps
+  measure: \Pr\{F(\hat x)-F^\star\le\eps\}\ge1-\delta_{\rm ht}
   lower_bound:
     claim_id: null
     display: Unknown
     source: /
     caveats: []
   upper_bound:
-    claim_id: arxiv_1904_09015_decentralized_and_parallel_primal_and_dual_ac#8
-    display: \NSFO = O((M^2+\sigma^2) R^2/\eps^2)
-    source: 'arXiv:1904.09015: Table 4'
+    claim_id: manual_review_arxiv_1904_09015#ub_c_ns_stat_high_probability
+    display: \NSFO=O((M^2+\sigma^2)R^2/\eps^2)
+    source: 'arXiv:1904.09015: Table 4; high-probability discussion'
+    supporting_sources:
+    - source: 'arXiv:1406.0919: Section 4; Corollaries 3 and 4'
+      role: primary high-probability light-tail analysis
+      pdf_path: tmp/pdfs/statement_locations_20260912/arxiv_1406_0919.pdf
+      pdf_sha256: a214c462a627389fd2332dccfe6dfa1ecf4cd1f5c9f37414f5eca95204daf759
+      pdf_pages:
+      - 17
+      - 19
+      - 21
+      - 23
     caveats:
-    - High-probability guarantee.
-    - Bounded Bregman diameter.
-    evidence_caveats:
-    - 'Search scope: local_350_paper_corpus; not a global literature proof.'
-    - arxiv_1904_09015_decentralized_and_parallel_primal_and_dual_ac#8 has paper quality=needs_review;
-      keep theorem caveats.
-    - Split from mixed-tag source row `agent_van_sum_sto_c_ns_sfo_stat_goss_sync_ncmp_n_sfo_objective_gap_general`;
-      theorem evidence is reused for this atomic tag row.
+    - Compact Euclidean high-probability oracle model.
+    - Fixed-network high-probability leading order.
+    - Per-worker stochastic-oracle count.
     assumptions:
-    - The Bregman diameter of the feasible set is finite.
-    scope_source_locations:
-    - arXiv:1904.09015, stochastic convex primal-oracle theorem underlying Table 3.
-    source_original_location: Table T:stoch_prima_oracle, C nonsmooth
+    - Common compact Euclidean feasible set of diameter at most R and exact projections.
+    - Convex M-Lipschitz local objectives with conditionally unbiased, worker-independent light-tail stochastic gradients.
+    source_original_location: Table 4; high-probability discussion
     source_labels:
     - T:stoch_prima_oracle
     source_version: arXiv:1904.09015; pdf_sha256:d1f9b6503141b008854ceb6c03c64f95ec2e692fe8c1c37e99b8d6f2b03e4e33
@@ -3724,11 +3822,11 @@ cells:
   status: LB?
   agent_cell_verification: data/canonical_cell_verifications/van_sum_sto_c_ns_sfo_stat_goss_sync_ncmp_n_sfo_objective_gap_general.json
   promotion_decision:
-    mode: expanded
-    strict_ready: false
+    mode: manual_review_20260912
+    strict_ready: true
     reason: expanded-table selected verified claim(s) despite cell verdict=pass
     selected_claim_refs:
-    - arxiv_1904_09015_decentralized_and_parallel_primal_and_dual_ac#8
+    - manual_review_arxiv_1904_09015#ub_c_ns_stat_high_probability
     blocked_selected_claims: []
   search_evidence:
     source: data/problem_type_search.yaml
@@ -3759,8 +3857,16 @@ cells:
   manual_atomic_adjudication:
     atomic_evidence_confirmed: true
     claim_id: arxiv_1904_09015_decentralized_and_parallel_primal_and_dual_ac#8
-    reason: The stochastic unbiased oracle acts on local expected convex nonsmooth objectives, so the
-      atomic objective tag is STO.
+    reason: The stochastic unbiased oracle acts on local expected convex nonsmooth objectives, so the atomic objective
+      tag is STO.
+  review_complete: true
+  review_resolution_20260912:
+    decision: approved_and_applied
+    reviewer_type: agent_with_user_approval
+    review_date: '2026-09-12'
+    evidence: data/manual_review_decisions_20260912.yaml
+    reason: Replace the deterministic-looking criterion by the source high-probability guarantee and disclose its
+      domain/oracle model.
 - cell_id: manual_van_sto_c_ns_sfo_tv_goss_objective_gap
   order: 200020
   problem_tags:
@@ -3795,8 +3901,8 @@ cells:
     taxonomy_diagnosis: standard_searchable
   manual_full_reaudit:
     original_cell_id: manual_van_sto_c_ns_sfo_tv_goss_objective_gap
-    reason: Use the theorem's network-average output; Proposition mntn remains excluded because it is
-      algorithm-specific and does not quantify over a decentralized oracle class.
+    reason: Use the theorem's network-average output; Proposition mntn remains excluded because it is algorithm-specific
+      and does not quantify over a decentralized oracle class.
 - cell_id: agent_van_sto_nc_sm_sfo_stat_goss_sync_ncmp_n_sfo_gradient_norm_squared_variance_reduced
   order: 1100
   problem_tags:
@@ -3830,8 +3936,7 @@ cells:
     - Initialization, batches, and stepsizes follow Theorem 1 and Corollary 1.
     scope_source_locations:
     - arXiv:1911.12665, Assumptions 1-3, Theorem 1, and Corollary 1.
-    source_original_location: 'Thm. 1 / Thm. 3_SPIDER; Corollary 1 / Corollary corollary: convergence
-      rate'
+    source_original_location: 'Thm. 1 / Thm. 3_SPIDER; Corollary 1 / Corollary corollary: convergence rate'
     source_labels:
     - 3_SPIDER
     - 'corollary: convergence rate'
@@ -3859,9 +3964,8 @@ cells:
       excluded_claims: 0
   manual_full_reaudit:
     original_cell_id: agent_van_sto_nc_sm_sfo_stat_goss_sync_ncmp_n_sfo_gradient_norm_squared_variance_reduced
-    reason: Reserve T for the iteration horizon and use the corollary's reported epsilon-order complexity;
-      the omitted coefficient is problem-, network-, and initialization-dependent and is disclosed in
-      Remark N6.
+    reason: Reserve T for the iteration horizon and use the corollary's reported epsilon-order complexity; the omitted
+      coefficient is problem-, network-, and initialization-dependent and is disclosed in Remark N6.
 - cell_id: agent_van_sto_nc_sm_sfo_stat_goss_sync_ncmp_n_sfo_gradient_norm_squared_directed_row_stochastic
   order: 1080
   problem_tags:
@@ -3876,10 +3980,26 @@ cells:
   - NCMP
   measure: \frac1T\sum_{t=1}^{T}\E\|\nabla F(\bar x_{\pi_A}^t)\|^2 \le \eps
   lower_bound:
-    claim_id: null
-    display: Unknown
-    source: /
-    caveats: []
+    claim_id: lu2021#agent_review:noise_only_per_node_squared_stationarity_20260907
+    display: \NSFO=\Omega(\sigma^2L\Delta/(N\eps^2))
+    source: 'arXiv:2006.08085: Theorem 1; Appendix Setting 1'
+    caveats:
+    - Proof-level row-60 noise-query projection.
+    - Directed-network term excluded from row 60 LB.
+    assumptions:
+    - N>=2, L>0, Delta>0, sigma>0, unrestricted dimension, identical local hard functions, and common zero initialization.
+    - Fresh independent unbiased variance-bounded SFO calls and the source zero-respecting/linear-span class in its
+      small-epsilon regime.
+    source_original_location: Theorem 1; Appendix Setting 1
+    source_labels:
+    - thm:lower-bound
+    - setting:stochastic
+    source_version: arXiv:2006.08085; pdf_sha256:720a7e94166b0472cb105059d7edde5f49706d6a5fed16d23748ea5cfce6a363
+    pdf_verified: true
+    review_resolution:
+      decision: promote_independent_noise_only_query_claim
+      excluded_original_claim: arxiv_2506_04600_achieving_linear_speedup_and_near_optimal_com#1
+      reason: The new LB is independently owned by Lu--De Sa; the row reference's network term remains excluded.
   upper_bound:
     claim_id: arxiv_2506_04600_achieving_linear_speedup_and_near_optimal_com#2
     display: \NSFO=O\!\left(\frac{\sigma^2L\Delta}{N\eps^2}+\frac{(1+\log\kappa_A+\log N)L\Delta}{(1-\beta_A)\eps}\right)
@@ -3889,10 +4009,10 @@ cells:
     evidence_caveats:
     - The theorem counts total samples as K through R-sample minibatches and T=K/R.
     - 'Search scope: local_10000_paper_corpus; not a global literature proof.'
-    - arxiv_2506_04600_achieving_linear_speedup_and_near_optimal_com#2 comes from a paper with paper-level
-      gate needs_review; the selected claim itself i...
-    - arxiv_2506_04600_achieving_linear_speedup_and_near_optimal_com#2 has paper quality=needs_review;
-      keep theorem caveats.
+    - arxiv_2506_04600_achieving_linear_speedup_and_near_optimal_com#2 comes from a paper with paper-level gate needs_review;
+      the selected claim itself i...
+    - arxiv_2506_04600_achieving_linear_speedup_and_near_optimal_com#2 has paper quality=needs_review; keep theorem
+      caveats.
     - Directed row-stochastic graph.
     assumptions:
     - Stepsize, minibatch size, inner-loop length, and directed-mixing parameters use the theorem choices.
@@ -3903,13 +4023,14 @@ cells:
     - thm(main):3
     source_version: arXiv:2506.04600; pdf_sha256:e9a43c59a317c40174b79545b45045322d7a47f9418638e916f932701006ff11
     pdf_verified: true
-  status: LB?
+  status: GAP
   agent_cell_verification: data/canonical_cell_verifications/van_sto_nc_sm_sfo_stat_goss_sync_ncmp_n_sfo_gradient_norm_squared_directed_row_stochastic.json
   promotion_decision:
-    mode: expanded
-    strict_ready: false
+    mode: manual_review_20260912
+    strict_ready: true
     reason: expanded-table selected verified claim(s) despite cell verdict=pass
     selected_claim_refs:
+    - lu2021#agent_review:noise_only_per_node_squared_stationarity_20260907
     - arxiv_2506_04600_achieving_linear_speedup_and_near_optimal_com#2
     blocked_selected_claims: []
   search_evidence:
@@ -3923,6 +4044,14 @@ cells:
       comparable_lower_bounds: 0
       comparable_upper_bounds: 1
       excluded_claims: 2
+  review_complete: true
+  review_resolution_20260912:
+    decision: approved_and_applied
+    reviewer_type: agent_with_user_approval
+    review_date: '2026-09-12'
+    evidence: data/manual_review_decisions_20260912.yaml
+    reason: Promote only the independently verified Lu--De Sa pure-query noise lower bound and preserve the prior
+      network-term exclusion.
 - cell_id: agent_van_sto_nc_sm_sfo_tv_goss_sync_ncmp_n_sfo_gradient_norm_squared_column_stochastic_directed
   order: 1110
   problem_tags:
@@ -4047,22 +4176,79 @@ cells:
   - GOSS
   - SYNC
   - NCMP
-  measure: '-'
+  - COMP
+  - PROX
+  measure: \E[F(\bar y_{\rm PM}^T)-F^\star]\le\eps
   lower_bound:
     claim_id: null
     display: Unknown
-    source: /
+    source: ''
     caveats: []
   upper_bound:
-    claim_id: null
-    display: Unknown
-    source: /
-    caveats: []
-  status: Unknown
+    claim_id: arxiv_2402_02356_decentralized_sum_of_nonconvex_optimization#2
+    paper_id: arxiv_2402_02356_decentralized_sum_of_nonconvex_optimization
+    display: \NSFO=O\!\left((K_{\rm loc}+K_{\rm loc}^{3/4}\sqrt{\kappa_{\rm snc}})\left[1+\log(\Delta/\eps)\right]\right)
+    source: 'arXiv:2402.02356: Theorem 5.1; Corollary 5.3'
+    caveats:
+    - Global SC; components may be nonconvex.
+    - Exact initial smooth-gradient consensus.
+    - Expected per-node snapshot and sample count.
+    - Network-average PMGT output.
+    - Exact prox side access.
+    assumptions:
+    - F=phi+h is globally mu-strongly convex, phi is convex and L-smooth, h is a common proper convex possibly nonsmooth
+      regularizer with exact proximal access.
+    - Each smooth component has upper curvature ell_1 and lower curvature -ell_2, with ell_2>=ell_1>0; components
+      may be nonconvex. SC describes the total objective, not each component.
+    - Static symmetric positive-semidefinite doubly stochastic W, W<=I and null(I-W)=span(1).
+    - Per-node component count K_loc is the paper's n, common geometric inner-loop length and batch b=ceil(sqrt(K_loc))
+      within constant-factor integer rounding.
+    - Stepsize, momentum and FastMix tolerance are set as in the proof; communication length may depend on the horizon
+      and is uncounted.
+    - For a conservative proof-supported subcase require the average smooth part to have positive strong-convexity
+      modulus sigma_f>0, because the proof's finite constant J contains 1/sigma_f.
+    - Consensus initial primal points and consensus gradient tracker equal to the global gradient of the smooth part;
+      exact initial gradient averaging uses K_loc initial component queries per node and additional uncounted communication.
+    review_conditions:
+    - Expected query count; each epoch costs O(K_loc) component calls including local full-gradient snapshots and
+      both members of stochastic gradient differences; initialization adds O(K_loc).
+    - Algorithm1 writes grad F(x0) although F includes h; the proof requires zero initial tracker disagreement. The
+      scoped statement interprets this as the smooth-part global gradient and requires its exact consensus initialization
+      explicitly. It is not a theorem for ordinary unsynchronized local-gradient initialization.
+    - The source broadly allows sigma_f=0 but the displayed proof divides by sigma_f; do not silently include the
+      pure-regularizer-strong-convexity boundary in this audited subcase.
+    - The selected rate controls the network-average output. Global strong convexity does not imply convex local components.
+    - 'Source visible numbering supersedes stale extraction: old Theorem3.1/4.1/Corollary4.2 become Theorem4.1/Theorem5.1/Corollary5.3.'
+    accounting:
+      oracle: N_SFO
+      scope: per_node
+      source_bound: O((K_loc+((sqrt(L)+(ell_1*ell_2)^(1/4))/sqrt(mu))*K_loc^(3/4))*(1+log(Delta/eps)))
+      initialization_included: true
+    source_labels:
+    - theorem_strong_convex
+    - corollary_strong
+    - strongconvex_algo_2
+    source_original_location: Theorem 5.1; Corollary 5.3
+    source_version: arXiv:2402.02356; pdf_sha256:8d62dc11d507b67136837593097d2657d9fae840ff67da7206d7874098bbbe1c
+    pdf_verified: true
+    reviewer_type: agent
+    review_date: '2026-09-07'
+  status: LB?
   manual_research:
     research_status: existing_row_removed_by_manual_reaudit
     taxonomy_diagnosis: correction_required
     taxonomy_note: The prior setting was represented only by a non-atomic split row.
+  review_resolution:
+    original_v8_row: 63
+    decision: accepted_with_explicit_model_conditions
+    reviewer_type: agent
+    evidence: outputs/reports/row60_resolution_20260907/composite_review.json
+    note: Require composite/prox access, positive smooth-part strong convexity, exact initial smooth-gradient consensus,
+      expected query counting and average output. This is not an unrestricted bare nonsmooth SFO result.
+  review_complete: true
+  evidence_search:
+    reviewed_candidate: arxiv_2402_02356_decentralized_sum_of_nonconvex_optimization#2
+    lower_bound: No matching LB established by this bounded review; not a global nonexistence claim.
 - cell_id: manual_empty_van_sum_sc_ns_sfo_tv_goss
   order: 900010
   problem_tags:
@@ -4090,8 +4276,8 @@ cells:
   manual_research:
     research_status: exact_evidence_found
     taxonomy_diagnosis: standard_searchable
-    taxonomy_note: SUM+SFO is meaningful only when the paper explicitly uses an incremental/component
-      oracle and reports per-node sample calls.
+    taxonomy_note: SUM+SFO is meaningful only when the paper explicitly uses an incremental/component oracle and reports
+      per-node sample calls.
 - cell_id: manual_empty_van_sum_c_sm_sfo_tv_goss
   order: 900016
   problem_tags:
@@ -4119,8 +4305,8 @@ cells:
   manual_research:
     research_status: exact_evidence_found
     taxonomy_diagnosis: standard_searchable
-    taxonomy_note: SUM+SFO is meaningful only when the paper explicitly uses an incremental/component
-      oracle and reports per-node sample calls.
+    taxonomy_note: SUM+SFO is meaningful only when the paper explicitly uses an incremental/component oracle and reports
+      per-node sample calls.
 - cell_id: manual_empty_van_sum_c_ns_fo_tv_goss
   order: 900020
   problem_tags:
@@ -4133,23 +4319,74 @@ cells:
   - GOSS
   - SYNC
   - NCMP
-  measure: '-'
+  - COMP
+  - PROX
+  measure: \E[F(\tilde y_{\rm DA}^T)-F^\star]\le\eps
   lower_bound:
     claim_id: null
     display: Unknown
-    source: /
+    source: ''
     caveats: []
   upper_bound:
-    claim_id: null
-    display: Unknown
-    source: /
-    caveats: []
-  status: Unknown
+    claim_id: arxiv_2106_14075_decentralized_composite_optimization_in_stoch#2
+    paper_id: arxiv_2106_14075_decentralized_composite_optimization_in_stoch
+    display: \NFO=O(\eps^{-1})
+    source: 'arXiv:2106.14075: Corollary 2; Equation (22)'
+    caveats:
+    - Virtual dual-averaging output only.
+    - Fixed-parameter FO order; initialization included.
+    - Random-network rather than arbitrary TV guarantee.
+    - Exact prox side access.
+    assumptions:
+    - Convex L-smooth local smooth parts plus a shared closed proper convex regularizer h; total objective is composite
+      and may be nonsmooth.
+    - Exact dual-averaging subproblem; for quadratic d this is a proximal map, uncounted as FO.
+    - 'Assumption 2: independent-in-time random undirected doubly stochastic mixing with the stated uniform second-moment
+      contraction, not arbitrary deterministic time-varying graphs.'
+    - A fixed admissible source stepsize a obeys Equations (16) and (18), with mu=0.
+    - Initial point and prox function satisfy Equation (6); all nodes start at a common point.
+    review_conditions:
+    - Auxiliary-output objective gap only; the source expressly leaves the same objective rate at local outputs open
+      when h is nonzero.
+    - The hidden constant depends on the fixed source stepsize, network, smoothness and initialization; no network-optimality
+      or LB match is claimed.
+    - One initial smooth local-gradient call plus at most one new call per iteration; cached prior gradients are reused.
+    - The auxiliary output is the time average of prox points formed from averaged dual accumulators, not the arithmetic
+      mean of local primal outputs. Computing this virtual output at an actual node requires extra aggregation/prox
+      side work, not covered by this FO-only count.
+    accounting:
+      oracle: N_FO
+      scope: per_node
+      source_bound: N_FO <= 1+max{1,ceil(C/(a epsilon))}, since E[F(tilde y^T)-F*]<=C/(a T). The final unused gradient
+        can be skipped; T+1 is conservative.
+      initialization_included: true
+    source_labels:
+    - coro:2
+    - eq:y-sublinear
+    - inexact_thm
+    - LinDDA
+    source_original_location: Corollary 2; Equation (22)
+    source_version: arXiv:2106.14075; pdf_sha256:80162d25ae54482ae9d4551d1cd5d3f3f719bd980761c6b7c8d40a4e8a7664bb
+    pdf_verified: true
+    reviewer_type: agent
+    review_date: '2026-09-07'
+  status: LB?
   manual_research:
     research_status: taxonomy_issue
     taxonomy_diagnosis: nonsmooth_fo_ambiguous
-    taxonomy_note: A nonsmooth first-order oracle must be defined as subgradient or proximal access; bare
-      FO is not an atomic oracle classification.
+    taxonomy_note: A nonsmooth first-order oracle must be defined as subgradient or proximal access; bare FO is not
+      an atomic oracle classification.
+  review_resolution:
+    original_v8_row: 66
+    decision: accepted_auxiliary_output_only
+    reviewer_type: agent
+    evidence: outputs/reports/row60_resolution_20260907/composite_review.json
+    note: Require composite/prox access and random-network assumptions. The virtual auxiliary output is not a local
+      returned iterate; aggregation and prox side work are not included in FO calls.
+  review_complete: true
+  evidence_search:
+    reviewed_candidate: arxiv_2106_14075_decentralized_composite_optimization_in_stoch#2
+    lower_bound: No matching LB established by this bounded review; not a global nonexistence claim.
 - cell_id: manual_empty_van_sum_nc_ns_fo_stat_goss
   order: 900031
   problem_tags:
@@ -4177,8 +4414,8 @@ cells:
   manual_research:
     research_status: taxonomy_issue
     taxonomy_diagnosis: nonsmooth_fo_ambiguous
-    taxonomy_note: A nonsmooth first-order oracle must be defined as subgradient or proximal access; bare
-      FO is not an atomic oracle classification.
+    taxonomy_note: A nonsmooth first-order oracle must be defined as subgradient or proximal access; bare FO is not
+      an atomic oracle classification.
 - cell_id: manual_empty_van_sum_nc_ns_fo_tv_goss
   order: 900032
   problem_tags:
@@ -4206,8 +4443,8 @@ cells:
   manual_research:
     research_status: taxonomy_issue
     taxonomy_diagnosis: nonsmooth_fo_ambiguous
-    taxonomy_note: A nonsmooth first-order oracle must be defined as subgradient or proximal access; bare
-      FO is not an atomic oracle classification.
+    taxonomy_note: A nonsmooth first-order oracle must be defined as subgradient or proximal access; bare FO is not
+      an atomic oracle classification.
 - cell_id: manual_empty_van_sum_nc_ns_sfo_tv_goss
   order: 900034
   problem_tags:
@@ -4235,8 +4472,8 @@ cells:
   manual_research:
     research_status: adjacent_only
     taxonomy_diagnosis: standard_searchable
-    taxonomy_note: SUM+SFO is meaningful only when the paper explicitly uses an incremental/component
-      oracle and reports per-node sample calls.
+    taxonomy_note: SUM+SFO is meaningful only when the paper explicitly uses an incremental/component oracle and reports
+      per-node sample calls.
 - cell_id: manual_empty_van_sum_nc_ns_subg_stat_goss
   order: 900035
   problem_tags:
@@ -4320,8 +4557,13 @@ cells:
   manual_research:
     research_status: adjacent_only
     taxonomy_diagnosis: standard_searchable
-    taxonomy_note: SUM+SFO is meaningful only when the paper explicitly uses an incremental/component
-      oracle and reports per-node sample calls.
+    taxonomy_note: SUM+SFO is meaningful only when the paper explicitly uses an incremental/component oracle and reports
+      per-node sample calls.
+  review_resolution:
+    old_row: 72
+    decision: preserve_original_v8_draft_and_use_structured_EMPTY_in_review_edition
+    reason: The v8 output-only draft has no matching source-data/provenance registry. It is not promoted by this review;
+      original artifacts remain untouched.
 - cell_id: manual_empty_van_sto_nc_ns_sfo_tv_goss
   order: 900082
   problem_tags:
@@ -4396,12 +4638,12 @@ presentation:
   compact_notation: true
   column_widths:
     problem_type: 0.82
-    measure: 1.1
+    measure: 1.16
     lower_bound: 1.28
     upper_bound: 1.52
     status: 0.39
     reference_lb: 1.04
-    reference_ub: 1.23
+    reference_ub: 1.17
   compact_scope_note: true
   tag_definitions: data/tag_definitions_manual_expanded_v8.yaml
   reference_style: numbered
@@ -4433,3 +4675,34 @@ presentation:
   - UB?
   - LB?
   - Unknown
+review_scope:
+  decisions: data/manual_review_decisions_20260912.yaml
+  base_edition: manual_review_20260907
+  reviewer_type: agent_with_user_approval
+  human_approval_recorded: true
+  approved_rows:
+  - 11
+  - 12
+  - 14
+  - 29
+  - 33
+  - 37
+  - 55
+  - 57
+  - 60
+  inherited_review_rows:
+  - 25
+  - 48
+  - 63
+  - 66
+  - 72
+  excluded_main_terms:
+  - row: 12
+    term: communication-round spectral branch
+    reason: no unconditional conversion from communication rounds to per-node oracle queries
+  - row: 33
+    term: network-dependent lower-bound branch
+    reason: conversion relies on the source's coupled one-query/one-gossip clock and path linear-span class
+  - row: 60
+    term: directed-network lower-bound branch
+    reason: communication-clock reasoning does not establish an unrestricted per-node oracle-query lower bound

@@ -1,7 +1,6 @@
 papers:
 - paper_id: kovalev2024
-  title: Lower Bounds and Optimal Algorithms for Non-Smooth Convex Decentralized Optimization over Time-Varying
-    Networks
+  title: Lower Bounds and Optimal Algorithms for Non-Smooth Convex Decentralized Optimization over Time-Varying Networks
   authors:
   - Dmitry Kovalev
   - Ekaterina Borodich
@@ -23,8 +22,8 @@ papers:
   arxiv: '2601.03566'
   url: https://arxiv.org/abs/2601.03566
 - paper_id: arxiv_2312_04928_understanding_digraphs
-  title: 'Understanding the Influence of Digraphs on Decentralized Optimization: Effective Metrics, Lower
-    Bound, and Optimal Algorithm'
+  title: 'Understanding the Influence of Digraphs on Decentralized Optimization: Effective Metrics, Lower Bound, and
+    Optimal Algorithm'
   authors:
   - Liyuan Liang
   - Xinmeng Huang
@@ -36,8 +35,7 @@ papers:
   arxiv: '2312.04928'
   url: https://arxiv.org/abs/2312.04928
 - paper_id: arxiv_2009_04373_variance_reduced_extra_and_diging
-  title: Variance Reduced EXTRA and DIGing and Their Optimal Acceleration for Strongly Convex Decentralized
-    Optimization
+  title: Variance Reduced EXTRA and DIGing and Their Optimal Acceleration for Strongly Convex Decentralized Optimization
   authors:
   - Huan Li
   - Zhouchen Lin
@@ -48,8 +46,7 @@ papers:
   arxiv: '2009.04373'
   url: https://arxiv.org/abs/2009.04373
 - paper_id: arxiv_1912_12110_linear_convergence_primal_dual
-  title: Linear Convergence of First- and Zeroth-Order Primal-Dual Algorithms for Distributed Nonconvex
-    Optimization
+  title: Linear Convergence of First- and Zeroth-Order Primal-Dual Algorithms for Distributed Nonconvex Optimization
   authors:
   - Xinlei Yi
   - Shengjun Zhang
@@ -73,8 +70,8 @@ papers:
   arxiv: '1905.07996'
   url: https://arxiv.org/abs/1905.07996
 - paper_id: arxiv_2110_01594_stochastic_proximal_gradient_framework
-  title: 'A Stochastic Proximal Gradient Framework for Decentralized Non-Convex Composite Optimization:
-    Topology-Independent Sample Complexity and Communication Efficiency'
+  title: 'A Stochastic Proximal Gradient Framework for Decentralized Non-Convex Composite Optimization: Topology-Independent
+    Sample Complexity and Communication Efficiency'
   authors:
   - Ran Xin
   - Subhro Das
@@ -86,8 +83,7 @@ papers:
   arxiv: '2110.01594'
   url: https://arxiv.org/abs/2110.01594
 - paper_id: arxiv_2112_10389_decentralized_stochastic_proximal_gradient
-  title: Decentralized Stochastic Proximal Gradient Descent with Variance Reduction over Time-varying
-    Networks
+  title: Decentralized Stochastic Proximal Gradient Descent with Variance Reduction over Time-varying Networks
   authors:
   - Xuanjie Li
   - Yuedong Xu
@@ -123,3 +119,33 @@ papers:
   venue: arXiv
   arxiv: '2211.00533'
   url: https://arxiv.org/abs/2211.00533
+- paper_id: arxiv_2402_02356_decentralized_sum_of_nonconvex_optimization
+  arxiv: '2402.02356'
+  title: Decentralized Sum-of-Nonconvex Optimization
+  authors:
+  - Zhuanghua Liu
+  - Bryan Kian Hsiang Low
+  year: 2024
+  venue: arXiv
+  url: https://arxiv.org/abs/2402.02356
+- paper_id: agarwal2012information
+  arxiv: '1009.0571'
+  title: Information-theoretic lower bounds on the oracle complexity of convex optimization
+  authors:
+  - Alekh Agarwal
+  - Peter L. Bartlett
+  - Pradeep Ravikumar
+  - Martin J. Wainwright
+  year: 2012
+  venue: IEEE Transactions on Information Theory
+  url: https://arxiv.org/abs/1009.0571
+- paper_id: lan2016gradient
+  arxiv: '1406.0919'
+  title: Gradient Sliding for Composite Optimization
+  authors:
+  - Guanghui Lan
+  year: 2016
+  venue: Mathematical Programming
+  url: https://arxiv.org/abs/1406.0919
+review_date: '2026-09-12'
+source_table: data/table_cells_manual_expanded_v8.yaml

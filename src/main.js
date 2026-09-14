@@ -101,19 +101,19 @@ function renderReviewerCard(reviewer) {
           <h4>${escapeHtml(reviewer.name)}</h4>
         </div>
         <p class="reviewer-stats">
-          <span>${reviewer.papers.length} papers</span>
+          <span>${reviewer.papers.filter((paper) => paper.active).length} active / ${reviewer.assignmentCount} assigned</span>
           <span>${reviewer.rowNumbers.length} rows</span>
           <span>${reviewer.settingCount} settings</span>
         </p>
       </header>
       <ul class="review-paper-list">
         ${reviewer.papers.map((paper) => `
-          <li class="review-paper">
-            <a class="review-paper-title" href="#${escapeHtml(paper.referenceId)}">
-              <span class="review-paper-number">[${paper.number}]</span>
+          <li class="review-paper${paper.active ? "" : " review-paper-inactive"}">
+            <a class="review-paper-title" href="${paper.active ? `#${escapeHtml(paper.referenceId)}` : escapeHtml(paper.url)}">
+              <span class="review-paper-number">${paper.active ? `[${paper.number}]` : "[old]"}</span>
               <span>${escapeHtml(paper.title)}</span>
             </a>
-            <ul class="review-occurrence-list" aria-label="Settings and rows for reference ${paper.number}">
+            ${paper.active ? `<ul class="review-occurrence-list" aria-label="Settings and rows for reference ${paper.number}">
               ${paper.occurrences.map((occurrence) => `
                 <li>
                   <span class="review-side">${escapeHtml(occurrence.side)}</span>
@@ -121,7 +121,7 @@ function renderReviewerCard(reviewer) {
                   <code>${escapeHtml(occurrence.setting)}</code>
                 </li>
               `).join("")}
-            </ul>
+            </ul>` : `<p class="review-paper-note">${escapeHtml(paper.reason)}</p>`}
           </li>
         `).join("")}
       </ul>
@@ -392,7 +392,7 @@ app.innerHTML = `
           <div class="review-coverage-note">
             <div>
               <strong>${data.reviewMeta.attributedRows} of ${data.rows.length} rows have named review attribution.</strong>
-              <span>The remaining ${data.reviewMeta.pendingCoverageRows} <code>Unknown</code> rows cite no paper and remain ${escapeHtml(data.reviewMeta.unassignedCoverageLabel)}.</span>
+              <span>${data.reviewMeta.agentReviewedRows} rows also carry ${escapeHtml(data.reviewMeta.agentReviewLabel).toLowerCase()} provenance; ${data.reviewMeta.pendingCoverageRows} <code>Unknown</code> rows remain ${escapeHtml(data.reviewMeta.unassignedCoverageLabel)}.</span>
             </div>
           </div>
 
@@ -407,7 +407,7 @@ app.innerHTML = `
   <footer>
     <div class="content-width footer-inner">
       <span class="optbound-wordmark"><span class="brand-mark">Opt</span><span class="brand-name">Bound</span></span>
-      <span>Current release: Decentralized Optimization · v${data.meta.version}</span>
+      <span>Current release: Decentralized Optimization · v${data.meta.version} · Reviewed ${escapeHtml(data.meta.reviewDate)}</span>
       <a class="icon-button" href="#top" data-scroll-target="top" aria-label="Back to top" title="Back to top"><i data-lucide="arrow-up"></i></a>
     </div>
   </footer>

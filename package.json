@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
+    "sync:reviewed-data": "node scripts/sync-reviewed-data-20260912.mjs",
     "predev": "node scripts/build-data.mjs",
     "dev": "vite --host 127.0.0.1",
     "prebuild": "node scripts/prepare-entry.mjs && node scripts/build-data.mjs && node scripts/audit-data.mjs",

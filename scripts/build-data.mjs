@@ -64,6 +64,7 @@ const files = {
   bibliography: "bibliography_manual_expanded_v8.yaml",
   delivery: "decentralized_lb_ub_table_manual_expanded_v8.md",
   reviewAttribution: "review_attribution_manual_expanded_v8.yaml",
+  reviewDecisions: "manual_review_decisions_20260912.yaml",
 };
 
 async function load(name) {
@@ -135,6 +136,17 @@ const locations = YAML.parse(raw.locations);
 const reviewAttribution = YAML.parse(raw.reviewAttribution);
 const reviewers = reviewAttribution.reviewers || [];
 const reviewerIdByReference = new Map();
+const agentReviewedReferenceIds = new Set(reviewAttribution.agent_reviewed_reference_ids || []);
+const inactiveHumanReviewedReferenceIds = new Set(
+  reviewAttribution.inactive_human_reviewed_reference_ids || [],
+);
+const inactiveHumanReviewedReferenceById = new Map(
+  (reviewAttribution.inactive_human_reviewed_references || [])
+    .map((entry) => [entry.reference_id, entry]),
+);
+const agentReviewByCellId = new Map(
+  (reviewAttribution.agent_reviewed_rows || []).map((entry) => [entry.cell_id, entry]),
+);
 
 for (const reviewer of reviewers) {
   for (const referenceId of reviewer.reference_ids || []) {
@@ -173,16 +185,26 @@ const rows = parsedRows.map((cells, index) => {
   const renderedTags = cleanCell(cells[1]);
   const renderedStatus = cleanCell(cells[5]);
   const renderedCells = cells.map((cell) => renderInline(cell));
+  const lbReferenceIds = referenceIdsFromCell(renderedCells[6]);
+  const ubReferenceIds = referenceIdsFromCell(renderedCells[7]);
   const lbReviewerIds = unique(
-    referenceIdsFromCell(renderedCells[6]).map((referenceId) => reviewerIdByReference.get(referenceId)).filter(Boolean),
+    lbReferenceIds.map((referenceId) => reviewerIdByReference.get(referenceId)).filter(Boolean),
   );
   const ubReviewerIds = unique(
-    referenceIdsFromCell(renderedCells[7]).map((referenceId) => reviewerIdByReference.get(referenceId)).filter(Boolean),
+    ubReferenceIds.map((referenceId) => reviewerIdByReference.get(referenceId)).filter(Boolean),
   );
   const reviewerIds = unique([...lbReviewerIds, ...ubReviewerIds]);
+  const agentReview = agentReviewByCellId.get(source.cell_id);
+  const lbAgentReviewed = Boolean(agentReview?.scope?.includes("LB"))
+    || lbReferenceIds.some((referenceId) => agentReviewedReferenceIds.has(referenceId));
+  const ubAgentReviewed = Boolean(agentReview?.scope?.includes("UB"))
+    || ubReferenceIds.some((referenceId) => agentReviewedReferenceIds.has(referenceId));
+  const isAgentReviewed = Boolean(agentReview) || lbAgentReviewed || ubAgentReviewed;
   const reviewState = reviewerIds.length
     ? "assigned"
-    : source.status === "Unknown" ? "coverage-pending" : "unassigned";
+    : source.status === "Unknown"
+      ? "coverage-pending"
+      : isAgentReviewed ? "agent-reviewed" : "unassigned";
 
   if (number !== index + 1) throw new Error(`Non-sequential row number at ${index + 1}`);
   if (renderedTags !== visibleTags.join(" ")) {
@@ -203,6 +225,10 @@ const rows = parsedRows.map((cells, index) => {
       reviewerIds,
       lbReviewerIds,
       ubReviewerIds,
+      agentReviewed: isAgentReviewed,
+      agentReviewScope: agentReview?.scope || [],
+      lbAgentReviewed,
+      ubAgentReviewed,
     },
     searchText: cells.map(plainText).join(" ").toLowerCase(),
   };
@@ -233,7 +259,27 @@ const referenceById = new Map(referenceMatches.map((match) => [
 const reviewerProfiles = reviewers.map((reviewer) => {
   const papers = (reviewer.reference_ids || []).map((referenceId) => {
     const reference = referenceById.get(referenceId);
-    if (!reference) throw new Error(`Reviewer ${reviewer.id} points to missing reference ${referenceId}`);
+    if (!reference) {
+      if (!inactiveHumanReviewedReferenceIds.has(referenceId)) {
+        throw new Error(`Reviewer ${reviewer.id} points to missing reference ${referenceId}`);
+      }
+      const inactiveReference = inactiveHumanReviewedReferenceById.get(referenceId);
+      if (!inactiveReference) {
+        throw new Error(`Inactive reference ${referenceId} has no display metadata`);
+      }
+      return {
+        referenceId,
+        number: null,
+        title: inactiveReference.title,
+        url: inactiveReference.url,
+        active: false,
+        state: inactiveReference.state,
+        reason: inactiveReference.reason,
+        occurrences: [],
+        rowNumbers: [],
+        settings: [],
+      };
+    }
 
     const occurrences = rows.flatMap((row) => {
       const appearsInLb = referenceIdsFromCell(row.cells[6]).includes(referenceId);
@@ -255,6 +301,7 @@ const reviewerProfiles = reviewers.map((reviewer) => {
 
     return {
       ...reference,
+      active: true,
       occurrences,
       rowNumbers: occurrences.map((occurrence) => occurrence.rowNumber),
       settings: [...settingRows].map(([label, rowNumbers]) => ({ label, rowNumbers })),
@@ -266,6 +313,7 @@ const reviewerProfiles = reviewers.map((reviewer) => {
     id: reviewer.id,
     name: reviewer.name,
     papers,
+    assignmentCount: (reviewer.reference_ids || []).length,
     rowNumbers,
     settingCount: unique(papers.flatMap((paper) => paper.settings.map((setting) => setting.label))).length,
   };
@@ -274,15 +322,17 @@ const sourceHashes = Object.fromEntries(
   Object.entries(raw).map(([key, value]) => [key, createHash("sha256").update(value).digest("hex")]),
 );
 
-const statusCounts = rows.reduce((counts, row) => {
-  counts[row.status] = (counts[row.status] || 0) + 1;
-  return counts;
-}, {});
+const statusCounts = Object.fromEntries((table.presentation.status_order || []).map((status) => [status, 0]));
+rows.forEach((row) => {
+  statusCounts[row.status] = (statusCounts[row.status] || 0) + 1;
+});
 
 const output = {
   meta: {
     version: table.presentation.version,
     generatedAt: table.generated_at,
+    reviewDate: reviewAttribution.review_date,
+    reviewEdition: reviewAttribution.review_edition,
     counts: table.counts,
     statusCounts,
     claimSides: locations.counts.claim_sides,
@@ -297,7 +347,11 @@ const output = {
   reviewers: reviewerProfiles,
   reviewMeta: {
     unassignedCoverageLabel: reviewAttribution.unassigned_coverage_label,
+    agentReviewLabel: reviewAttribution.agent_review_label,
     attributedRows: rows.filter((row) => row.review.reviewerIds.length > 0).length,
+    agentReviewedRows: rows.filter((row) => row.review.agentReviewed).length,
+    agentOnlyRows: rows.filter((row) => row.review.state === "agent-reviewed").length,
+    agentReviewedCellIds: rows.filter((row) => row.review.agentReviewed).map((row) => row.cellId),
     pendingCoverageRows: rows.filter((row) => row.review.state === "coverage-pending").length,
   },
   notationSymbols: notation.symbols.map(({ key, latex, aliases }) => ({ key, latex, aliases })),

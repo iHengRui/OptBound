@@ -1,0 +1,60 @@
+version: 1
+review_date: '2026-09-12'
+reviewer_type: agent_with_user_approval
+human_approval_recorded: true
+base_edition: manual_review_20260907
+base_files:
+  table:
+    path: data/table_cells_manual_review_20260907.yaml
+    sha256: 13994823db5389f4f92b828951af1fcdd4b387f88ffd8bb79a388b6a84616aef
+  notation:
+    path: data/notation_manual_review_20260907.yaml
+    sha256: 8ccdccd2423b12a6202b95bab458287aba55b2651bbbd13bdd7c5974b3d43e64
+  remarks:
+    path: data/remark_notes_manual_review_20260907.yaml
+    sha256: c27db84375404a47591e259d2c82229fc4d9e188ccd946ca4c67578bd06e3e6b
+  statement_locations:
+    path: data/statement_locations_manual_review_20260907.yaml
+    sha256: 9bd77162fff5ba8279e4ace4ebcc6b0fb5aea3e18b7bcbac74aa26f9b07e9007
+  bibliography:
+    path: data/bibliography_manual_review_20260907.yaml
+    sha256: 0846317e43b857a7ac90b6d00884cf70b8501091325aa2040a32f278f5ddfa02
+  claims:
+    path: data/claims_manual_review_20260907.jsonl
+    sha256: 3923576a327f72a3b8a0aca5c41eeb0c6cef827a0d572439ab9c30ae90f2017e
+approved_rows:
+- row: 11
+  action: replace the weaker UB by DEAREST+ and distinguish global smoothness L_F
+- row: 12
+  action: retain only the sample-noise LB and correct its stale full-time provenance
+- row: 14
+  action: restore the sigma=0 matching UB and mark the comparison conditional
+- row: 29
+  action: retain the order while disclosing the exact output, model, stepsizes, network, and prefactor
+- row: 33
+  action: add only the free-communication stochastic-oracle noise lower bound
+- row: 37
+  action: replace Delta by the theorem's full constant C_DPS and define q_DPS
+- row: 55
+  action: distinguish the nonsmooth-part bound M_phi and disclose the source oracle/network model
+- row: 57
+  action: state the high-probability target and disclose the light-tail/compact-domain assumptions
+- row: 60
+  action: add only the proof-level sample-noise lower bound; keep the communication term excluded
+inherited_review_rows:
+- 25
+- 48
+- 63
+- 66
+- 72
+excluded_main_terms:
+- row: 12
+  term: communication-round spectral branch
+  reason: no unconditional conversion from communication rounds to per-node oracle queries
+- row: 33
+  term: network-dependent lower-bound branch
+  reason: conversion relies on the source's coupled one-query/one-gossip clock and path linear-span class
+- row: 60
+  term: directed-network lower-bound branch
+  reason: communication-clock reasoning does not establish an unrestricted per-node oracle-query lower bound
+output_suffix: manual_review_20260912

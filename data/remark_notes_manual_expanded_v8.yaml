@@ -9,21 +9,21 @@ categories:
 category_descriptions:
   S: These notes identify restrictions on the communication graph, mixing model, topology family, or decentralized
     method class covered by the cited result.
-  O: These notes record oracle primitives or exact local operations required in addition to the local
-    first-order calls counted in the displayed complexity.
-  A: These notes list hypotheses that are stronger or more specific than the canonical row tags alone,
-    including regularity, heterogeneity, initialization, and algorithmic restrictions.
-  G: These notes explain the probabilistic, initialization, stepsize, finite-time, or asymptotic regime
-    in which the displayed guarantee holds.
-  M: These notes clarify how the cited result's controlled metric or merit target differs from, or is
-    related to, the measure displayed in the table.
-  N: These notes explain how iteration, batch, and sample counts in cited results are converted into per-node
-    oracle queries and which communication work is excluded.
+  O: These notes record oracle primitives or exact local operations required in addition to the local first-order
+    calls counted in the displayed complexity.
+  A: These notes list hypotheses that are stronger or more specific than the canonical row tags alone, including regularity,
+    heterogeneity, initialization, and algorithmic restrictions.
+  G: These notes explain the probabilistic, initialization, stepsize, finite-time, or asymptotic regime in which the
+    displayed guarantee holds.
+  M: These notes clarify how the cited result's controlled metric or merit target differs from, or is related to,
+    the measure displayed in the table.
+  N: These notes explain how iteration, batch, and sample counts in cited results are converted into per-node oracle
+    queries and which communication work is excluded.
 notes:
 - id: S1
   category: S
-  sentence: The cited result is stated for directed communication graphs rather than the unrestricted
-    static or time-varying graph class.
+  sentence: The cited result is stated for directed communication graphs rather than the unrestricted static or time-varying
+    graph class.
 - id: S2
   category: S
   sentence: The cited lower bound uses the paper's sun-shaped time-varying graph construction.
@@ -38,8 +38,8 @@ notes:
   sentence: The cited result is restricted to two-dimensional grid or geometric network topologies.
 - id: S6
   category: S
-  sentence: The packet-drop model starts from a fixed strongly connected directed graph and requires every
-    original communication edge to succeed at least once in every B consecutive rounds.
+  sentence: The packet-drop model starts from a fixed strongly connected directed graph and requires every original
+    communication edge to succeed at least once in every B consecutive rounds.
 - id: S7
   category: S
   sentence: The cited lower bound is proved for a linear-span method class on a path graph.
@@ -48,43 +48,41 @@ notes:
   sentence: The cited result uses separate directed row-stochastic and column-stochastic mixing matrices.
 - id: S9
   category: S
-  sentence: The cited result is formulated for a random-network model rather than an arbitrary deterministic
-    time-varying network.
+  sentence: The cited result is formulated for a random-network model rather than an arbitrary deterministic time-varying
+    network.
 - id: S11
   category: S
   sentence: The cited lower bound is proved for a linear-span method class on directed graphs.
 - id: O1
   category: O
-  sentence: The cited result assumes exact access to a proximal operator in addition to the counted first-order
-    oracle calls.
+  sentence: The cited result assumes exact access to a proximal operator in addition to the counted first-order oracle
+    calls.
 - id: O2
   category: O
-  sentence: The cited result requires exact local orthogonal projections onto the node constraint sets
-    in addition to the counted gradients.
+  sentence: The cited result requires exact local orthogonal projections onto the node constraint sets in addition
+    to the counted gradients.
 - id: O3
   category: O
-  sentence: The oracle model allows exact gradients of the local Fenchel conjugates in addition to ordinary
-    local gradients; MSDA uses this conjugate-function gradient primitive.
+  sentence: The oracle model allows exact gradients of the local Fenchel conjugates in addition to ordinary local
+    gradients; MSDA uses this conjugate-function gradient primitive.
 - id: O4
   category: O
-  sentence: The cited result requires a mirror-map operation in addition to the counted stochastic first-order
-    oracle calls.
+  sentence: The cited result requires a mirror-map operation in addition to the counted stochastic first-order oracle
+    calls.
 - id: O5
   category: O
-  sentence: The cited lower bound restricts algorithms to the paper's partial-averaging communication
-    model.
+  sentence: The cited lower bound restricts algorithms to the paper's partial-averaging communication model.
 - id: O6
   category: O
-  sentence: The cited result relies on a finite consensus routine whose accuracy depends on the target
-    accuracy.
+  sentence: The cited result relies on a finite consensus routine whose accuracy depends on the target accuracy.
 - id: A1
   category: A
-  sentence: The cited result assumes order-\(p\) smoothness, which is stronger than ordinary first-order
-    smoothness when \(p>1\).
+  sentence: The cited result assumes order-\(p\) smoothness, which is stronger than ordinary first-order smoothness
+    when \(p>1\).
 - id: A2
   category: A
-  sentence: The cited upper bound assumes the paper's weak close-distribution condition, which bounds
-    cross-node gradient dissimilarity only at the common initial point \(x=0\).
+  sentence: The cited upper bound assumes the paper's weak close-distribution condition, which bounds cross-node gradient
+    dissimilarity only at the common initial point \(x=0\).
 - id: A3
   category: A
   sentence: The cited upper bound assumes a uniform bound on gradient dissimilarity across nodes.
@@ -114,177 +112,170 @@ notes:
   sentence: The displayed complexity is a high-probability guarantee rather than an expectation guarantee.
 - id: G3
   category: G
-  sentence: The displayed rate is the sufficiently-large-T simplification in Corollary 1; Theorem 2 contains
-    additional finite-time initial-error, network, variance, and heterogeneity terms.
+  sentence: The displayed rate is the sufficiently-large-T simplification in Corollary 1; Theorem 2 contains additional
+    finite-time initial-error, network, variance, and heterogeneity terms.
 - id: G4
   category: G
   sentence: The cited result uses a diminishing stepsize schedule.
 - id: G6
   category: G
-  sentence: The displayed rate assumes an exact oracle (zero oracle bias); the consensus tolerance is
-    chosen with the target accuracy so the additive error floor is at most the target, affecting communication
-    rounds but not the displayed per-node gradient-query order.
+  sentence: The displayed rate assumes an exact oracle (zero oracle bias); the consensus tolerance is chosen with
+    the target accuracy so the additive error floor is at most the target, affecting communication rounds but not
+    the displayed per-node gradient-query order.
 - id: M1
   category: M
-  sentence: The cited result controls a Bregman merit function rather than the ordinary objective gap
-    or Euclidean distance.
+  sentence: The cited result controls a Bregman merit function rather than the ordinary objective gap or Euclidean
+    distance.
 - id: M2
   category: M
-  sentence: Only the stationarity component of the cited result is retained in the displayed metric; its
-    other residual terms are omitted.
+  sentence: Only the stationarity component of the cited result is retained in the displayed metric; its other residual
+    terms are omitted.
 - id: M3
   category: M
-  sentence: The displayed metric follows from the equivalence between the strongly convex smooth metric
-    in the source and the table measure.
+  sentence: The displayed metric follows from the equivalence between the strongly convex smooth metric in the source
+    and the table measure.
 - id: N1
   category: N
-  sentence: The displayed complexity counts local gradient evaluations and does not count the additional
-    consensus rounds.
+  sentence: The displayed complexity counts local gradient evaluations and does not count the additional consensus
+    rounds.
 - id: N2
   category: N
-  sentence: Each outer iteration performs multiple gossip or consensus rounds, which are not counted as
-    oracle queries in the displayed rate.
+  sentence: Each outer iteration performs multiple gossip or consensus rounds, which are not counted as oracle queries
+    in the displayed rate.
 - id: N3
   category: N
-  sentence: The displayed count \(N_{\rm SFO}=T_{\rm out}R\) includes the \(R\) samples per outer iteration;
-    each outer iteration also performs two \(R\)-round gossip phases, counted separately as communication.
+  sentence: The displayed count \(N_{\rm SFO}=T_{\rm out}R\) includes the \(R\) samples per outer iteration; each
+    outer iteration also performs two \(R\)-round gossip phases, counted separately as communication.
 - id: N4
   category: N
   sentence: The displayed stochastic-oracle complexity is normalized to local batch size \(B=1\).
 - id: N5
   category: N
-  sentence: The displayed effective per-iteration network rate normalizes the cited result's block-contraction
-    parameter by its mixing-window length.
+  sentence: The displayed effective per-iteration network rate normalizes the cited result's block-contraction parameter
+    by its mixing-window length.
 - id: N6
   category: N
-  sentence: The displayed epsilon-only order suppresses coefficients depending on the initial objective
-    gap, network topology, gradient heterogeneity, and stochastic variance.
+  sentence: The displayed epsilon-only order suppresses coefficients depending on the initial objective gap, network
+    topology, gradient heterogeneity, and stochastic variance.
 - id: S12
   category: S
-  sentence: The cited lower bound is restricted to the paper's zero-initialized linear-span or local-memory
-    decentralized first-order method class.
+  sentence: The cited lower bound is restricted to the paper's zero-initialized linear-span or local-memory decentralized
+    first-order method class.
 - id: S13
   category: S
-  sentence: Every time-varying mixing operator must preserve consensus and satisfy the paper's uniform
-    contraction bound on the disagreement subspace.
+  sentence: Every time-varying mixing operator must preserve consensus and satisfy the paper's uniform contraction
+    bound on the disagreement subspace.
 - id: S14
   category: S
-  sentence: The cited result uses one fixed strongly connected directed graph with a primitive column-stochastic
-    mixing matrix.
+  sentence: The cited result uses one fixed strongly connected directed graph with a primitive column-stochastic mixing
+    matrix.
 - id: S15
   category: S
-  sentence: The time-varying directed graphs are jointly strongly connected over every C-step window;
-    the row- and column-stochastic weights have self-loops and uniform positive lower bounds.
+  sentence: The time-varying directed graphs are jointly strongly connected over every C-step window; the row- and
+    column-stochastic weights have self-loops and uniform positive lower bounds.
 - id: S16
   category: S
-  sentence: The cited result assumes a fixed connected undirected network and a symmetric positive-semidefinite
-    gossip operator with the stated consensus kernel.
+  sentence: The cited result assumes a fixed connected undirected network and a symmetric positive-semidefinite gossip
+    operator with the stated consensus kernel.
 - id: S17
   category: S
-  sentence: The cited result assumes doubly stochastic mixing and a finite window parameter for which
-    the paper's contraction factor \(\sigma_\gamma<1\).
+  sentence: The cited result assumes doubly stochastic mixing and a finite window parameter for which the paper's
+    contraction factor \(\sigma_\gamma<1\).
 - id: S18
   category: S
-  sentence: The cited multi-gossip result uses a symmetric doubly stochastic mixing matrix on a connected
-    static graph.
+  sentence: The cited multi-gossip result uses a symmetric doubly stochastic mixing matrix on a connected static graph.
 - id: S19
   category: S
-  sentence: The cited S-AB result uses separate row- and column-stochastic directed matrices whose associated
-    graphs have spanning trees with intersecting root sets.
+  sentence: The cited S-AB result uses separate row- and column-stochastic directed matrices whose associated graphs
+    have spanning trees with intersecting root sets.
 - id: S20
   category: S
-  sentence: The cited S-ADDOPT result assumes a fixed strongly connected directed graph and requires each
-    node to know its out-degree.
+  sentence: The cited S-ADDOPT result assumes a fixed strongly connected directed graph and requires each node to
+    know its out-degree.
 - id: S21
   category: S
-  sentence: The cited Push-SUM result assumes directed communication with strong connectivity over every
-    fixed-length window.
+  sentence: The cited Push-SUM result assumes directed communication with strong connectivity over every fixed-length
+    window.
 - id: A10
   category: A
-  sentence: 'The cited nonsmooth result uses local regularity: every local objective is convex and has
-    its own finite Lipschitz constant.'
+  sentence: 'The cited nonsmooth result uses local regularity: every local objective is convex and has its own finite
+    Lipschitz constant.'
 - id: A11
   category: A
-  sentence: The cited nonsmooth lower bound is stated in the sufficiently high-dimensional regime required
-    by its hard-instance construction.
+  sentence: The cited nonsmooth lower bound is stated in the sufficiently high-dimensional regime required by its
+    hard-instance construction.
 - id: A12
   category: A
-  sentence: The cited lower bound holds only in its stated accuracy and smoothness-parameter regime, including
-    the explicit separation between the mean and aggregate smoothness constants.
+  sentence: The cited lower bound holds only in its stated accuracy and smoothness-parameter regime, including the
+    explicit separation between the mean and aggregate smoothness constants.
 - id: A13
   category: A
-  sentence: The cited primal-dual linear-rate result assumes a fixed connected undirected graph, smooth
-    strongly convex local functions, exact local gradients, and the prescribed initialization and stepsize
-    conditions.
+  sentence: The cited primal-dual linear-rate result assumes a fixed connected undirected graph, smooth strongly convex
+    local functions, exact local gradients, and the prescribed initialization and stepsize conditions.
 - id: A14
   category: A
-  sentence: The cited FROST result assumes a strongly connected static digraph, smooth strongly convex
-    local objectives, and uncoordinated stepsizes in its admissible range.
+  sentence: The cited FROST result assumes a strongly connected static digraph, smooth strongly convex local objectives,
+    and uncoordinated stepsizes in its admissible range.
 - id: A15
   category: A
   sentence: The cited Sub-Weibull result additionally assumes bounded local subgradients, Lipschitz regularizers,
-    Sub-Weibull noise, strong graph connectivity, and convexity of the Bregman divergence in its second
-    argument.
+    Sub-Weibull noise, strong graph connectivity, and convexity of the Bregman divergence in its second argument.
 - id: A16
   category: A
-  sentence: The displayed stochastic primal bound assumes a finite Bregman diameter on the feasible set;
-    it is not an unrestricted whole-space guarantee.
+  sentence: The displayed stochastic primal bound assumes a finite Bregman diameter on the feasible set; it is not
+    an unrestricted whole-space guarantee.
 - id: A17
   category: A
-  sentence: The cited ProxGT-SR-E result assumes mean-squared smooth component gradients, unbiased sampling
-    with bounded variance, consensual initialization, the stated spectral mixing condition, and exact
-    prox.
+  sentence: The cited ProxGT-SR-E result assumes mean-squared smooth component gradients, unbiased sampling with bounded
+    variance, consensual initialization, the stated spectral mixing condition, and exact prox.
 - id: A18
   category: A
-  sentence: The cited S-AB asymptotic result assumes second-order growth at the optimum and differentiable
-    stochastic gradients with the stated higher-moment and random-Lipschitz bounds.
+  sentence: The cited S-AB asymptotic result assumes second-order growth at the optimum and differentiable stochastic
+    gradients with the stated higher-moment and random-Lipschitz bounds.
 - id: A19
   category: A
-  sentence: The cited S-ADDOPT result assumes conditionally unbiased stochastic gradients with uniformly
-    bounded conditional variance.
+  sentence: The cited S-ADDOPT result assumes conditionally unbiased stochastic gradients with uniformly bounded conditional
+    variance.
 - id: A20
   category: A
-  sentence: The cited DeMuon result assumes consensual initialization, bounded matrix noise, a primitive
-    doubly stochastic mixer, coupled extrapolation and momentum parameters, horizon-dependent stepsizes,
-    and the theorem's minimum iteration threshold.
+  sentence: The cited DeMuon result assumes consensual initialization, bounded matrix noise, a primitive doubly stochastic
+    mixer, coupled extrapolation and momentum parameters, horizon-dependent stepsizes, and the theorem's minimum iteration
+    threshold.
 - id: A21
   category: A
-  sentence: The cited D-SPIDER-SFO result assumes smooth local objectives, unbiased bounded-variance stochastic
-    gradients, the stated spectral mixing condition, consensual initialization, and the prescribed batch
-    and stepsize rules.
+  sentence: The cited D-SPIDER-SFO result assumes smooth local objectives, unbiased bounded-variance stochastic gradients,
+    the stated spectral mixing condition, consensual initialization, and the prescribed batch and stepsize rules.
 - id: A22
   category: A
-  sentence: The cited Push-SUM result assumes bounded stochastic-gradient variance and a uniform global
-    bound on cross-node gradient dissimilarity.
+  sentence: The cited Push-SUM result assumes bounded stochastic-gradient variance and a uniform global bound on cross-node
+    gradient dissimilarity.
 - id: A23
   category: A
-  sentence: The optimization consequence treats its initial-distance factor as bounded and requires every
-    node to know a common size estimate \(U\) satisfying \(U\geq N\) and \(U=O(N)\).
+  sentence: The optimization consequence treats its initial-distance factor as bounded and requires every node to
+    know a common size estimate \(U\) satisfying \(U\geq N\) and \(U=O(N)\).
 - id: G7
   category: G
   sentence: The cited directed lower bound requires \(\beta_\pi\) to be bounded away from zero, \(\beta_\pi\leq1-1/N\),
     and \(\log\kappa_\pi=\Omega(N(1-\beta_\pi))\); it is not uniform over all parameter tuples.
 - id: G8
   category: G
-  sentence: The displayed AdaMDOF sample order uses a local batch size of order \(\sqrt{K_{\rm loc}}\),
-    together with the momentum, stepsize, and adaptive-matrix parameter ranges prescribed by the cited
-    result.
+  sentence: The displayed AdaMDOF sample order uses a local batch size of order \(\sqrt{K_{\rm loc}}\), together with
+    the momentum, stepsize, and adaptive-matrix parameter ranges prescribed by the cited result.
 - id: G9
   category: G
-  sentence: The displayed logarithmic iteration complexity suppresses a contraction factor whose constants
-    depend on graph connectivity, mixing weights, objective regularity, and the admissible stepsize.
+  sentence: The displayed logarithmic iteration complexity suppresses a contraction factor whose constants depend
+    on graph connectivity, mixing weights, objective regularity, and the admissible stepsize.
 - id: G10
   category: G
-  sentence: The cited GT-SVRG result requires the prescribed stepsize, inner-loop length, and initialization
-    conditions.
+  sentence: The cited GT-SVRG result requires the prescribed stepsize, inner-loop length, and initialization conditions.
 - id: G11
   category: G
-  sentence: The displayed \(\epsilon\)-only logarithmic order treats the cited result's contraction factor
-    as fixed; otherwise the iteration count is proportional to \(\log(1/\epsilon)/\log(1/\gamma)\).
+  sentence: The displayed \(\epsilon\)-only logarithmic order treats the cited result's contraction factor as fixed;
+    otherwise the iteration count is proportional to \(\log(1/\epsilon)/\log(1/\gamma)\).
 - id: G12
   category: G
-  sentence: The cited MG-PullDiag-GT result requires the specified stepsize, minibatch, inner-loop, and
-    directed-mixing parameter choices.
+  sentence: The cited MG-PullDiag-GT result requires the specified stepsize, minibatch, inner-loop, and directed-mixing
+    parameter choices.
 - id: A24
   category: A
   sentence: The objective is a deterministic node sum; stochasticity enters only through the local oracle.
@@ -297,8 +288,8 @@ notes:
     gap based on the second-largest eigenvalue, rather than the global one-step contraction gap.
 - id: S23
   category: S
-  sentence: The cited lower bound uses an \(N\)-node path with \(N\geq6\), \(\rho=\Theta(N^{-2})\), origin
-    initialization, averaged output, and \(d=\Theta(S\sqrt\rho)\).
+  sentence: The cited lower bound uses an \(N\)-node path with \(N\geq6\), \(\rho=\Theta(N^{-2})\), origin initialization,
+    averaged output, and \(d=\Theta(S\sqrt\rho)\).
 - id: G13
   category: G
   sentence: The first restart epoch starts in consensus; later epochs use warm-started outputs.
@@ -311,8 +302,8 @@ notes:
     branch.
 - id: S24
   category: S
-  sentence: The graph sequence is time-varying and directed; every union over B0 consecutive graphs is
-    strongly connected, and each mixing matrix is column stochastic with the paper's out-degree weights.
+  sentence: The graph sequence is time-varying and directed; every union over B0 consecutive graphs is strongly connected,
+    and each mixing matrix is column stochastic with the paper's out-degree weights.
 - id: S25
   category: S
   sentence: The cited upper bound is specialized to a two-dimensional grid topology.
@@ -324,40 +315,195 @@ notes:
   sentence: The cited upper bound is specialized to an expander topology.
 - id: G15
   category: G
-  sentence: Each node uses a positive time-invariant but node-dependent stepsize. The stepsize maximum
-    and ratio must satisfy Theorem 4.1 or Corollary 4.2; the displayed logarithmic oracle order treats
-    the induced contraction factor \(\lambda\in(0,1)\) as fixed, and otherwise carries a factor \(1/\log(1/\lambda)\).
+  sentence: Each node uses a positive time-invariant but node-dependent stepsize. The stepsize maximum and ratio must
+    satisfy Theorem 4.1 or Corollary 4.2; the displayed logarithmic oracle order treats the induced contraction factor
+    \(\lambda\in(0,1)\) as fixed, and otherwise carries a factor \(1/\log(1/\lambda)\).
 - id: G16
   category: G
-  sentence: The displayed Sub-Weibull complexity suppresses confidence- and tail-dependent polylogarithmic
-    factors, including powers of \(\log(T/\delta_{\rm ht})\) governed by the tail index, where \(\delta_{\rm
-    ht}\) is the failure probability.
+  sentence: The displayed Sub-Weibull complexity suppresses confidence- and tail-dependent polylogarithmic factors,
+    including powers of \(\log(T/\delta_{\rm ht})\) governed by the tail index, where \(\delta_{\rm ht}\) is the failure
+    probability.
 - id: M4
   category: M
-  sentence: The cited lower bound uses a node-local output selected from local memory, whereas the cited
-    upper bound uses the global average output; only the oracle-order expressions are compared.
+  sentence: The cited lower bound uses a node-local output selected from local memory, whereas the cited upper bound
+    uses the global average output; only the oracle-order expressions are compared.
 - id: M5
   category: M
-  sentence: The cited lower bound permits an arbitrary algorithm output, whereas the cited upper bound
-    controls the iteration-average metric over network-average iterates; only the resulting oracle orders
-    are compared.
+  sentence: The cited lower bound permits an arbitrary algorithm output, whereas the cited upper bound controls the
+    iteration-average metric over network-average iterates; only the resulting oracle orders are compared.
 - id: N8
   category: N
-  sentence: The displayed network-dependent lower-bound term is an oracle projection of a coupled round
-    model in which each node performs one local query and one gossip step per round; it is not an unconditional
-    communication-free oracle lower bound.
+  sentence: The displayed network-dependent lower-bound term is an oracle projection of a coupled round model in which
+    each node performs one local query and one gossip step per round; it is not an unconditional communication-free
+    oracle lower bound.
 - id: N9
   category: N
-  sentence: The displayed lower bound divides an aggregate LIFO lower bound by \(N\); it applies to average
-    and worst-node workload, not every node individually. The full computation-round lower bound additionally
-    contains \(L\Delta/\epsilon^2\) in the nonconvex row and \(\kappa\log(1/\epsilon)\) in the PL row.
-    These serial-depth terms are excluded from the oracle count because partial participation permits
-    different nodes to carry different rounds.
+  sentence: The displayed lower bound divides an aggregate LIFO lower bound by \(N\); it applies to average and worst-node
+    workload, not every node individually. The full computation-round lower bound additionally contains \(L\Delta/\epsilon^2\)
+    in the nonconvex row and \(\kappa\log(1/\epsilon)\) in the PL row. These serial-depth terms are excluded from
+    the oracle count because partial participation permits different nodes to carry different rounds.
 - id: N10
   category: N
-  sentence: The displayed upper bound divides expected aggregate LIFO calls by the node count under uniform
-    node-component sampling; it is an expected per-node workload bound rather than an expected-maximum
-    workload bound.
+  sentence: The displayed upper bound divides expected aggregate LIFO calls by the node count under uniform node-component
+    sampling; it is an expected per-node workload bound rather than an expected-maximum workload bound.
+- id: M6
+  category: M
+  sentence: The cited convex dual-averaging result controls the time average of auxiliary prox points formed from
+    averaged dual accumulators, not the local returned iterates or their arithmetic average. Forming this virtual
+    output requires aggregation and prox side work beyond the counted local gradients.
+- id: N11
+  category: N
+  sentence: The cited dual-averaging algorithm uses one initial local gradient and at most one fresh local gradient
+    per iteration. The displayed epsilon-only order holds for a fixed admissible stepsize, network, smoothness and
+    initialization; their full coefficient is retained in the evidence ledger.
+- id: A26
+  category: A
+  sentence: The cited sum-of-nonconvex result assumes a strongly convex total composite objective, a convex smooth
+    aggregate, and component curvature bounds defining \(\kappa_{\rm snc}\). Individual components need not be convex.
+    The audited subcase requires a strictly positive strong-convexity modulus for the smooth aggregate because the
+    proof divides by that modulus.
+- id: O7
+  category: O
+  sentence: The cited PMGT-KatyushaX analysis is retained with a common initial point and an exactly consensual tracker
+    equal to the global smooth-part gradient. This explicitly interprets the source's ambiguous composite-gradient
+    initialization. Initialization costs \(K_{\rm loc}\) component calls per node plus uncounted aggregation communication;
+    ordinary unequal local-gradient initialization is not certified here.
+- id: N12
+  category: N
+  sentence: The cited PMGT-KatyushaX rate counts expected component-gradient evaluations per node, including full-gradient
+    snapshots, both evaluations in sampled gradient differences and initialization. The geometric inner-loop length
+    and batch size of order \(\sqrt{K_{\rm loc}}\) give an expected epoch cost of order \(K_{\rm loc}\); multi-consensus
+    and exact prox work are separate.
+- id: M7
+  category: M
+  sentence: The cited PMGT-KatyushaX guarantee concerns the objective gap at the network-average primal output, not
+    each individual node's output.
+- id: A27
+  category: A
+  sentence: The cited GT-PAGE analysis assumes the component mean-squared smoothness inequality separately at every
+    node, with bound \(L_{\rm rms,loc}\); a network-averaged component bound alone is insufficient. The display follows
+    the network-average objective used in the nonconvex analysis, despite the source introduction's sum notation.
+- id: N13
+  category: N
+  sentence: The cited GT-PAGE count is expected work at each node, including the initial full local gradient and stochastic
+    refresh/difference calls; it is not an expected maximum over nodes or a deterministic stopping budget.
+- id: S28
+  category: S
+  sentence: The cited dual-averaging result uses independent-in-time random undirected doubly stochastic mixing with
+    a uniform second-moment contraction; it is not an arbitrary deterministic time-varying-network guarantee.
+- id: A28
+  category: A
+  sentence: Here \(L_F\) is the smoothness of the global objective \(F\), while \(\bar L\) is component mean-squared
+    smoothness. The cited DEAREST result also assumes a connected undirected static network with a symmetric doubly
+    stochastic positive-semidefinite mixing matrix and common initialization.
+- id: N14
+  category: N
+  sentence: The row-11 lower bound is for the cited IFO/LIFO span class in its small-\(\eps\) regime. Dividing aggregate
+    LIFO work by \(N\) proves an average or some worst-node requirement, not the same lower bound at every node; the
+    separate computation-round term is excluded.
+- id: N15
+  category: N
+  sentence: Uniform node-component sampling makes the displayed DEAREST+ order the expected local query count at every
+    node; communication rounds are counted separately.
+- id: A29
+  category: A
+  sentence: The retained Lu--De Sa component uses the paper's zero-respecting/linear-span class, fresh independent
+    unbiased variance-bounded stochastic gradients, \(\sigma>0\), and the stated sufficiently small-\(\eps\) regime.
+- id: N16
+  category: N
+  sentence: With \(B=1\), only the Setting-1 sample/noise component is normalized from total work to a uniform-cap
+    or worst-node per-node query count. Corollary 1's spectral branch counts communication rounds and is not promoted
+    to \(N_{\rm SFO}\).
+- id: G17
+  category: G
+  sentence: The row-14 upper bound specializes the cited stochastic theorem to \(\sigma=0\), uses its integer budget
+    schedule, and hides the theorem's logarithmic factor.
+- id: M8
+  category: M
+  sentence: The source upper bound controls every node's objective gap; convexity then gives the displayed bound for
+    \(F(\bar x)\).
+- id: G18
+  category: G
+  sentence: The matching order is conditional on the source nonblocking coupled clock and on the path/linear-span
+    lower-bound class; it is not an unrestricted oracle-query LOG claim.
+- id: A30
+  category: A
+  sentence: Row 29 assumes a shared closed convex proximable \(h\), exact local gradients and prox steps, common initialization,
+    and a fixed \(a\in(0,1/\mu)\) satisfying source restrictions (16) and (18). The exact prefactor is \(C_{29}=(2/a)(2C/\mu+D)\).
+- id: S29
+  category: S
+  sentence: The source uses independent-in-time random undirected doubly stochastic matrices with \(\lambda_{\max}(\mathbb
+    E[P_t^\top P_t]-J)\le\beta^2<1\), not arbitrary deterministic time-varying mixing.
+- id: M9
+  category: M
+  sentence: The guarantee is for every node's weighted output \(\tilde x_i^T=A_T^{-1}\sum_{t=1}^T a_t x_i^t\), with
+    \(a_t=a(1-a\mu)^{-t}\), rather than an unspecified final iterate.
+- id: N17
+  category: N
+  sentence: The \(O(\log(1/\eps))\) display fixes \(a,\mu,C_{29}\) and the network constants and includes initialization;
+    it does not assert an explicit unrestricted graph dependence.
+- id: N18
+  category: N
+  sentence: Only the classical stochastic-oracle term is promoted. With total sample budget \(N_{\rm tot}=NQ\), the
+    minimax error \(\Omega(\sigma R/\sqrt{N_{\rm tot}})\) implies \(Q=\Omega(\sigma^2R^2/(N\eps^2))\). It remains
+    valid with free gossip and gives a uniform-cap or worst-node requirement, not the same burden at every node; it
+    is nontrivial only for \(\sigma>0\).
+- id: N19
+  category: N
+  sentence: The path/network lower-bound term is not entered because converting its communication rounds to oracle
+    calls uses the source's one-query/one-gossip coupled clock and deterministic path linear-span class.
+- id: A31
+  category: A
+  sentence: The cited DPSVRG theorem assumes componentwise smooth finite sums plus a shared proximable \(h\), exact
+    prox, time-varying \(b\)-connected mixing, bounded estimator/local-gradient/subgradient errors, and source parameters
+    independent of \(\eps\). Its full error constant is \(C_{\rm DPS}=(1+r_{\rm DPS}/(2n_{0,{\rm DPS}}))\Delta+\|x^0-x^\star\|^2/[n_{0,{\rm
+    DPS}}(2\alpha_{\rm DPS}-8\alpha_{\rm DPS}^2L)]+C_{{\rm err},{\rm DPS}}/[n_{0,{\rm DPS}}(r_{\rm DPS}\beta_{\rm
+    DPS}-1)]\).
+- id: N20
+  category: N
+  sentence: The source count is \(K_{\rm loc}S+2\sum_{s=1}^S\lceil n_{0,{\rm DPS}}\beta_{\rm DPS}^s\rceil\); the display
+    hides epoch logarithms and excludes multi-consensus and exact-prox work.
+- id: M10
+  category: M
+  sentence: The source controls the virtual centralized epoch output \(\tilde x^S\), not every node's returned local
+    iterate.
+- id: A32
+  category: A
+  sentence: For row 55, \(F_i(x)=\phi_i(x)+\mu\|x\|^2/2\). The bound \(M_\phi\) applies only to subgradients of convex
+    \(\phi_i\); its oracle is conditionally unbiased with variance at most \(\sigma^2\), while the quadratic term
+    is known and evaluated exactly.
+- id: S30
+  category: S
+  sentence: The source requires its per-time network contraction assumption, normalized here by \(\chi_{\rm TV}\);
+    joint connectivity alone is insufficient.
+- id: G19
+  category: G
+  sentence: The full achievable expression contains \(1+\chi_{\rm TV}M_\phi/\sqrt{\mu\eps}+(M_\phi+\sigma)^2/(\mu\eps)\).
+    The main cell records its fixed-network, sufficiently small-\(\eps\) leading oracle order, with integer-rounding
+    constants suppressed.
+- id: A33
+  category: A
+  sentence: Row 57 uses a common compact convex Euclidean domain of diameter at most \(R\), exact projections, convex
+    \(M\)-Lipschitz local objectives, and conditionally unbiased worker-independent noise satisfying \(\mathbb E[\exp(\|g_i-v_i\|^2/\sigma^2)\mid\mathcal
+    F]\le e\).
+- id: G20
+  category: G
+  sentence: The displayed row-57 order fixes the graph and failure probability and records the leading small-\(\eps\)
+    term. A conservative full form is \(\widetilde O(1+(M^2+\sigma^2)R^2/\eps^2+MR\sqrt{\chi_L}/\eps)\), with confidence
+    logarithms suppressed.
+- id: N21
+  category: N
+  sentence: One stacked stochastic-oracle evaluation in the cited decentralized method means one query at each node;
+    the per-worker count is therefore not divided by \(N\).
+- id: N22
+  category: N
+  sentence: The Lu--De Sa Setting-1 hard instance yields the squared-stationarity noise term after total-query/\(N\)
+    normalization under a uniform cap or worst-node count. It permits free communication but assumes fresh unbiased
+    bounded-variance queries, a zero-respecting/linear-span class, \(\sigma>0\), and sufficiently small \(\eps\).
+- id: N23
+  category: N
+  sentence: 'The separate \(\beta_A,\kappa_A\) term from the row-60 reference is not promoted: its argument counts
+    a coupled communication/iteration clock rather than unrestricted per-node stochastic-oracle queries.'
 mappings:
   Exact prox side access.:
   - O1
@@ -533,4 +679,72 @@ mappings:
   - G16
   DeMuon stationarity display only.:
   - M2
-delivery_version: 8
+  Virtual dual-averaging output only.:
+  - M6
+  Fixed-parameter FO order; initialization included.:
+  - N11
+  Global SC; components may be nonconvex.:
+  - A26
+  Exact initial smooth-gradient consensus.:
+  - O7
+  Expected per-node snapshot and sample count.:
+  - N12
+  Network-average PMGT output.:
+  - M7
+  Node-local RMS component smoothness.:
+  - A27
+  Expected local GT-PAGE query count.:
+  - N13
+  Random-network rather than arbitrary TV guarantee.:
+  - S28
+  Global-objective smoothness and DEAREST model.:
+  - A28
+  Restricted finite-sum LB accounting.:
+  - N14
+  Expected per-node DEAREST query count.:
+  - N15
+  Noise-only zero-respecting LB scope.:
+  - A29
+  Noise-only B=1 query normalization.:
+  - N16
+  Exact-oracle specialization of the stochastic theorem.:
+  - G17
+  Per-node-to-average convexity transfer.:
+  - M8
+  Conditional row-14 matching order.:
+  - G18
+  DDA composite model and stepsizes.:
+  - A30
+  Independent random doubly stochastic mixing.:
+  - S29
+  Weighted local DDA output.:
+  - M9
+  Fixed-parameter DDA order and initialization.:
+  - N17
+  Noise-only convex oracle lower bound.:
+  - N18
+  Network term excluded from row 33 LB.:
+  - N19
+  DPSVRG full constant and contraction regime.:
+  - A31
+  DPSVRG sample and side-operation count.:
+  - N20
+  Virtual centralized DPSVRG output.:
+  - M10
+  Known-quadratic nonsmooth oracle model.:
+  - A32
+  Source time-varying contraction condition.:
+  - S30
+  Fixed-network leading row-55 order.:
+  - G19
+  Compact Euclidean high-probability oracle model.:
+  - A33
+  Fixed-network high-probability leading order.:
+  - G20
+  Per-worker stochastic-oracle count.:
+  - N21
+  Proof-level row-60 noise-query projection.:
+  - N22
+  Directed-network term excluded from row 60 LB.:
+  - N23
+delivery_version: '20260912'
