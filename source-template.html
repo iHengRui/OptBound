@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -31,7 +31,23 @@
       content="A unified, paper-backed benchmark of lower and upper complexity bounds across distributed and stochastic optimization."
     />
     <meta name="twitter:image" content="https://optbound.reaslab.io/og.png" />
-    <meta name="theme-color" content="#161817" />
+    <meta name="theme-color" content="#f7f8f5" />
+    <script>
+      (() => {
+        let theme = "light";
+        try {
+          const policy = "light-default-v1";
+          if (localStorage.getItem("optbound-theme-policy") === policy) {
+            theme = localStorage.getItem("optbound-theme") === "dark" ? "dark" : "light";
+          } else {
+            localStorage.setItem("optbound-theme", "light");
+            localStorage.setItem("optbound-theme-policy", policy);
+          }
+        } catch {}
+        document.documentElement.dataset.theme = theme;
+        document.querySelector("meta[name='theme-color']").content = theme === "dark" ? "#161817" : "#f7f8f5";
+      })();
+    </script>
     <title>OptBound: A Unified Benchmark of Lower and Upper Complexity Bounds in Optimization</title>
   </head>
   <body>

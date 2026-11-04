@@ -151,7 +151,7 @@ app.innerHTML = `
         <a class="icon-button" href="https://github.com/iHengRui/OptBound" target="_blank" rel="noreferrer" aria-label="Open GitHub repository" title="GitHub repository">
           <i data-lucide="github"></i>
         </a>
-        <button class="icon-button" id="theme-toggle" type="button" aria-label="Switch to light theme" title="Switch theme">
+        <button class="icon-button" id="theme-toggle" type="button" aria-label="Switch to dark theme" title="Switch theme">
           <i data-lucide="sun" class="theme-icon-light"></i>
           <i data-lucide="moon" class="theme-icon-dark"></i>
         </button>
@@ -722,14 +722,22 @@ document.querySelectorAll("[data-view-reviewer]").forEach((button) => {
   });
 });
 
-document.querySelector("#theme-toggle").addEventListener("click", () => {
-  const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
-  document.documentElement.dataset.theme = next;
-  document.querySelector("meta[name='theme-color']").content = next === "dark" ? "#161817" : "#f7f8f5";
-  document.querySelector("#theme-toggle").setAttribute(
+const themeToggle = document.querySelector("#theme-toggle");
+function applyTheme(theme) {
+  document.documentElement.dataset.theme = theme;
+  document.querySelector("meta[name='theme-color']").content = theme === "dark" ? "#161817" : "#f7f8f5";
+  themeToggle.setAttribute(
     "aria-label",
-    next === "dark" ? "Switch to light theme" : "Switch to dark theme",
+    theme === "dark" ? "Switch to light theme" : "Switch to dark theme",
   );
+}
+applyTheme(document.documentElement.dataset.theme === "dark" ? "dark" : "light");
+themeToggle.addEventListener("click", () => {
+  const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+  applyTheme(next);
+  try {
+    localStorage.setItem("optbound-theme", next);
+  } catch {}
 });
 
 document.querySelectorAll("a[href^='http']").forEach((link) => {
