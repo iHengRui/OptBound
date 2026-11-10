@@ -266,7 +266,7 @@
 
 .topics-page .topics-table th:nth-child(5),
 .topics-page .topics-table td:nth-child(5) {
-  width: 110px;
+  width: 160px;
 }
 
 .topics-page .topics-table tr:hover td {
@@ -604,8 +604,15 @@
   }
 
   .topics-page .topic-stat {
+    flex-direction: column;
+    align-items: flex-start;
     gap: 7px;
     padding-inline: 10px;
+  }
+
+  .topics-page .topics-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .topics-page .topic-stat strong {

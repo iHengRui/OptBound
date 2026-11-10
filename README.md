@@ -10,7 +10,7 @@ Live site: https://optbound.reaslab.io/
 
 ## Open Questions
 
-The selection page lives at `/topics/`. It displays 43 setting profiles from the November 10, 2026 release, with one standard measure per setting. The existing 12 assignments are retained; other settings display “待分配”.
+The selection page lives at `/topics/`. It displays 43 setting profiles from the November 10, 2026 release, with one standard measure per setting. The existing 12 assignments are retained; other settings display “Unassigned”.
 
 - Update names in `data/profile-assignments.json`; each profile ID maps to an array of assignee names.
 - `data/profiles-catalog.json` records setting tags, original table rows, measures, and profile checksums.

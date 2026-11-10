@@ -5,15 +5,15 @@ import "./topics.css";
 
 // The single-file build uses a relative base; downloads stay rooted at the site.
 const base = new URL(import.meta.env.BASE_URL, window.location.origin).pathname;
-const geometryLabels = { SC: "强凸", C: "凸", NC: "非凸", PL: "PL 条件" };
+const geometryLabels = { SC: "Strongly convex", C: "Convex", NC: "Nonconvex", PL: "PL condition" };
 const profiles = catalog.profiles.map((profile) => {
   const tags = profile.tag.split("-");
   const people = assignments[profile.id] || [];
   const description = [
     geometryLabels[tags[1]],
-    tags.includes("SM") ? "光滑" : "非光滑",
-    tags.includes("TV") ? "时变网络" : "静态网络",
-    ...(tags.includes("COMP") ? ["复合目标"] : []),
+    tags.includes("SM") ? "Smooth" : "Nonsmooth",
+    tags.includes("TV") ? "Time-varying network" : "Static network",
+    ...(tags.includes("COMP") ? ["Composite objective"] : []),
   ].join(" · ");
   return { ...profile, tags, people, description };
 });
@@ -26,38 +26,38 @@ function escapeHtml(value) {
 
 function profileRow(profile) {
   return `<tr id="setting-${profile.id}" data-profile="${profile.id}">
-    <td class="topic-id" data-label="编号"><a href="#setting-${profile.id}" aria-label="Setting ${profile.id}">${profile.id}</a></td>
+    <td class="topic-id" data-label="ID"><a href="#setting-${profile.id}" aria-label="Setting ${profile.id}">${profile.id}</a></td>
     <td data-label="Setting">
       <p class="topic-description">${escapeHtml(profile.description)}</p>
       <code class="topic-tag">${escapeHtml(profile.tag)}</code>
-      <p class="topic-rows">原表行号 ${profile.sourceRows.join("、")}</p>
+      <p class="topic-rows">Table rows ${profile.sourceRows.join(", ")}</p>
     </td>
-    <td data-label="标准 measure">${escapeHtml(profile.measure)}</td>
-    <td data-label="选题人员"><div class="topic-assignees">${profile.people.length
+    <td data-label="Standard measure">${escapeHtml(profile.measure)}</td>
+    <td data-label="Assignee"><div class="topic-assignees">${profile.people.length
       ? profile.people.map((name) => `<span class="topic-person"><span class="topic-person-dot" aria-hidden="true"></span>${escapeHtml(name)}</span>`).join("")
-      : '<span class="topic-unassigned">待分配</span>'}</div></td>
-    <td data-label="Profile"><a class="topic-download" href="${base}profiles/${profile.file}" download="${profile.file}" aria-label="下载 Setting ${profile.id} 的 Markdown Profile"><i data-lucide="download" aria-hidden="true"></i><span>下载 MD</span></a></td>
+      : '<span class="topic-unassigned">Unassigned</span>'}</div></td>
+    <td data-label="Profile"><a class="topic-download" href="${base}profiles/${profile.file}" download="${profile.file}" aria-label="Download the Markdown profile for setting ${profile.id}"><i data-lucide="download" aria-hidden="true"></i><span>Download MD</span></a></td>
   </tr>`;
 }
 
 export function renderTopics(app) {
   document.body.classList.add("topics-page");
-  document.documentElement.lang = "zh-CN";
+  document.documentElement.lang = "en";
   document.title = "Open Questions · OptBound";
   document.querySelector('link[rel="canonical"]').href = "https://optbound.reaslab.io/topics/";
-  document.querySelector('meta[name="description"]').content = "下载去中心化优化各 setting 的标准 Profile，查看选题人员与待分配问题。";
+  document.querySelector('meta[name="description"]').content = "Browse decentralized optimization profiles, download each setting, and view topic assignments.";
   const assigned = profiles.filter((profile) => profile.people.length).length;
   const people = [...new Set(profiles.flatMap((profile) => profile.people))].sort((a, b) => a.localeCompare(b, "zh-CN"));
 
   app.innerHTML = `
     <header class="topbar topics-topbar">
       <div class="topbar-inner">
-        <a class="brand" href="${base}" aria-label="OptBound 首页"><span class="brand-mark">Opt</span><span class="brand-name">Bound</span></a>
-        <nav class="main-nav" aria-label="主导航">
+        <a class="brand" href="${base}" aria-label="OptBound home"><span class="brand-mark">Opt</span><span class="brand-name">Bound</span></a>
+        <nav class="main-nav" aria-label="Primary navigation">
           <a href="${base}#table">Benchmark</a>
           <a href="${base}topics/" aria-current="page">Open Questions</a>
         </nav>
-        <div class="topbar-actions"><button class="icon-button" id="theme-toggle" type="button" aria-label="切换到深色模式" title="切换主题"><i data-lucide="sun" class="theme-icon-light"></i><i data-lucide="moon" class="theme-icon-dark"></i></button></div>
+        <div class="topbar-actions"><button class="icon-button" id="theme-toggle" type="button" aria-label="Switch to dark theme" title="Switch theme"><i data-lucide="sun" class="theme-icon-light"></i><i data-lucide="moon" class="theme-icon-dark"></i></button></div>
       </div>
     </header>
     <main>
@@ -65,43 +65,43 @@ export function renderTopics(app) {
         <div class="content-width">
           <p class="topics-breadcrumb"><a href="${base}">OptBound</a><span aria-hidden="true"> / </span>Decentralized Optimization</p>
           <div class="topics-heading-row">
-            <div><p class="section-kicker">选题与 Profile</p><h1>Open Questions</h1></div>
-            <a class="command-button secondary" href="${base}profiles/${catalog.archive}" download><i data-lucide="download" aria-hidden="true"></i><span>下载全部 ${profiles.length} 份</span></a>
+            <div><p class="section-kicker">Profiles & assignments</p><h1>Open Questions</h1></div>
+            <a class="command-button secondary" href="${base}profiles/${catalog.archive}" download><i data-lucide="download" aria-hidden="true"></i><span>Download all ${profiles.length} profiles</span></a>
           </div>
-          <p class="topics-intro">查看各 setting 的标准 Profile 与选题人员。每个 setting 保留一个标准 measure，相同 setting 的原表行已合并。</p>
-          <div class="topics-stats" aria-label="选题概况">
+          <p class="topics-intro">Download a profile and see who is working on each setting. Each setting uses one standard measure; duplicate table rows are grouped.</p>
+          <div class="topics-stats" aria-label="Assignment overview">
             <div class="topic-stat"><strong>${profiles.length}</strong><span>Settings</span></div>
-            <div class="topic-stat"><strong>${assigned}</strong><span>已分配</span></div>
-            <div class="topic-stat"><strong>${profiles.length - assigned}</strong><span>待分配</span></div>
+            <div class="topic-stat"><strong>${assigned}</strong><span>Assigned</span></div>
+            <div class="topic-stat"><strong>${profiles.length - assigned}</strong><span>Unassigned</span></div>
           </div>
         </div>
       </section>
-      <section class="content-width topics-panel" aria-label="Setting 列表">
-        <form class="topics-toolbar" role="search" aria-label="筛选 Setting">
-          <label class="search-field topics-search"><i data-lucide="search" aria-hidden="true"></i><span class="sr-only">搜索编号、标签或人员</span><input id="topic-search" type="search" placeholder="搜索编号、标签或人员…" autocomplete="off"></label>
+      <section class="content-width topics-panel" aria-label="Settings">
+        <form class="topics-toolbar" role="search" aria-label="Filter settings">
+          <label class="search-field topics-search"><i data-lucide="search" aria-hidden="true"></i><span class="sr-only">Search by ID, tag or name</span><input id="topic-search" type="search" placeholder="Search by ID, tag or name…" autocomplete="off"></label>
           <div class="topics-selects">
-            <label class="topics-filter"><span>几何条件</span><select id="topic-geometry"><option value="">全部条件</option><option value="SC">强凸 SC</option><option value="C">凸 C</option><option value="NC">非凸 NC</option><option value="PL">PL 条件</option></select></label>
-            <label class="topics-filter"><span>通信网络</span><select id="topic-network"><option value="">全部网络</option><option value="STAT">静态 STAT</option><option value="TV">时变 TV</option></select></label>
-            <label class="topics-filter"><span>选题人员</span><select id="topic-person"><option value="">全部人员</option>${people.map((name) => `<option value="${escapeHtml(name)}">${escapeHtml(name)}</option>`).join("")}</select></label>
+            <label class="topics-filter"><span>Geometry</span><select id="topic-geometry"><option value="">All</option><option value="SC">Strongly convex (SC)</option><option value="C">Convex (C)</option><option value="NC">Nonconvex (NC)</option><option value="PL">PL condition</option></select></label>
+            <label class="topics-filter"><span>Network</span><select id="topic-network"><option value="">All</option><option value="STAT">Static (STAT)</option><option value="TV">Time-varying (TV)</option></select></label>
+            <label class="topics-filter"><span>Assignee</span><select id="topic-person"><option value="">All</option>${people.map((name) => `<option value="${escapeHtml(name)}">${escapeHtml(name)}</option>`).join("")}</select></label>
           </div>
-          <div class="topics-status-tabs" role="group" aria-label="分配状态">
-            <button type="button" data-status="all" aria-pressed="true">全部 <span>${profiles.length}</span></button>
-            <button type="button" data-status="unassigned" aria-pressed="false">待分配 <span>${profiles.length - assigned}</span></button>
-            <button type="button" data-status="assigned" aria-pressed="false">已分配 <span>${assigned}</span></button>
+          <div class="topics-status-tabs" role="group" aria-label="Assignment status">
+            <button type="button" data-status="all" aria-pressed="true">All <span>${profiles.length}</span></button>
+            <button type="button" data-status="unassigned" aria-pressed="false">Unassigned <span>${profiles.length - assigned}</span></button>
+            <button type="button" data-status="assigned" aria-pressed="false">Assigned <span>${assigned}</span></button>
           </div>
         </form>
-        <div class="topics-results-bar"><p id="topic-count" role="status" aria-live="polite"></p><button type="button" id="topic-reset">清除筛选</button></div>
+        <div class="topics-results-bar"><p id="topic-count" role="status" aria-live="polite"></p><button type="button" id="topic-reset">Clear filters</button></div>
         <div class="topics-table-wrap">
           <table class="topics-table">
-            <caption class="sr-only">去中心化优化 Setting、标准 measure、选题人员与 Profile 下载</caption>
-            <thead><tr><th scope="col">编号</th><th scope="col">Setting</th><th scope="col">标准 measure</th><th scope="col">选题人员</th><th scope="col">Profile</th></tr></thead>
+            <caption class="sr-only">Decentralized optimization settings, standard measures, assignees and profile downloads</caption>
+            <thead><tr><th scope="col">ID</th><th scope="col">Setting</th><th scope="col">Standard measure</th><th scope="col">Assignee</th><th scope="col">Profile</th></tr></thead>
             <tbody id="topics-body"></tbody>
           </table>
-          <div class="topics-empty" id="topic-empty" hidden><strong>没有匹配的 setting</strong><p>试试其他关键词，或清除筛选查看全部问题。</p><button class="command-button secondary" type="button" id="topic-empty-reset">清除筛选</button></div>
+          <div class="topics-empty" id="topic-empty" hidden><strong>No matching settings</strong><p>Try another keyword or clear the filters to see all settings.</p><button class="command-button secondary" type="button" id="topic-empty-reset">Clear filters</button></div>
         </div>
       </section>
     </main>
-    <footer class="topics-footer"><div class="content-width footer-inner"><span class="optbound-wordmark"><span class="brand-mark">Opt</span><span class="brand-name">Bound</span></span><span>Profile 更新于 ${catalog.updatedAt.replaceAll("-", ".")} · Markdown 格式</span><a href="${base}#table">返回 Benchmark</a></div></footer>`;
+    <footer class="topics-footer"><div class="content-width footer-inner"><span class="optbound-wordmark"><span class="brand-mark">Opt</span><span class="brand-name">Bound</span></span><span>Profiles updated ${catalog.updatedAt} · Markdown</span><a href="${base}#table">Back to benchmark</a></div></footer>`;
 
   const controls = {
     q: document.querySelector("#topic-search"),
@@ -127,7 +127,7 @@ export function renderTopics(app) {
         && (status === "all" || (status === "assigned" ? profile.people.length > 0 : profile.people.length === 0));
     });
     document.querySelector("#topics-body").innerHTML = visible.map(profileRow).join("");
-    document.querySelector("#topic-count").textContent = `显示 ${visible.length} / ${profiles.length} 个 setting`;
+    document.querySelector("#topic-count").textContent = `Showing ${visible.length} of ${profiles.length} settings`;
     document.querySelector("#topic-empty").hidden = visible.length > 0;
     document.querySelector(".topics-table").hidden = visible.length === 0;
     document.querySelectorAll("[data-status]").forEach((button) => button.setAttribute("aria-pressed", String(button.dataset.status === status)));
@@ -158,7 +158,7 @@ export function renderTopics(app) {
   function applyTheme(theme) {
     document.documentElement.dataset.theme = theme;
     document.querySelector('meta[name="theme-color"]').content = theme === "dark" ? "#161817" : "#f7f8f5";
-    themeToggle.setAttribute("aria-label", theme === "dark" ? "切换到浅色模式" : "切换到深色模式");
+    themeToggle.setAttribute("aria-label", theme === "dark" ? "Switch to light theme" : "Switch to dark theme");
   }
   applyTheme(document.documentElement.dataset.theme === "dark" ? "dark" : "light");
   themeToggle.addEventListener("click", () => {
