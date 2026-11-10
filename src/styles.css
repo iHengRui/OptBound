@@ -1538,6 +1538,14 @@ footer {
     width: 100%;
   }
 
+  .directory-hero .hero-actions {
+    flex-wrap: wrap;
+  }
+
+  .directory-hero .hero-actions .command-button.primary {
+    flex-basis: 100%;
+  }
+
   .command-button.primary {
     flex: 1;
   }

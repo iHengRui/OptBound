@@ -12,8 +12,12 @@ import {
 } from "lucide";
 import data from "./generated-data.json";
 import "./styles.css";
+import { renderTopics } from "./topics.js";
 
 const app = document.querySelector("#app");
+if (/\/topics(?:\/index\.html)?\/?$/.test(window.location.pathname)) {
+  renderTopics(app);
+} else {
 const formalTitle = "OptBound: A Unified Benchmark of Lower and Upper Complexity Bounds in Optimization";
 const statusOrder = ["EXACT", "COND", "LOG", "GAP", "UB?", "LB?", "Unknown"];
 const suiteGroups = [
@@ -138,6 +142,7 @@ app.innerHTML = `
         <span class="brand-mark">Opt</span><span class="brand-name">Bound</span>
       </a>
       <nav class="main-nav" aria-label="Primary navigation">
+        <a href="${import.meta.env.BASE_URL}topics/">Open Questions</a>
         <a href="#benchmarks" data-scroll-target="benchmarks">Benchmarks</a>
         <a href="#table" data-scroll-target="table">Table</a>
         <a href="#notation" data-scroll-target="notation">Notation</a>
@@ -172,6 +177,7 @@ app.innerHTML = `
         </div>
         <div class="hero-actions">
           <a class="command-button primary" href="#suite-tabs" data-scroll-target="suite-tabs">Browse benchmark suites</a>
+          <a class="command-button secondary" href="${import.meta.env.BASE_URL}topics/">Open Questions</a>
           <a class="command-button secondary" href="${import.meta.env.BASE_URL}decentralized-lb-ub-table-v8.pdf" download>
             <i data-lucide="download"></i><span>PDF</span>
           </a>
@@ -842,3 +848,4 @@ buildRows();
 filterRows();
 renderMath(document.querySelector("main"));
 highlightHashTarget();
+}

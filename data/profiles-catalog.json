@@ -1,0 +1,463 @@
+{
+  "updatedAt": "2026-11-10",
+  "archive": "profiles-43-20261110.zip",
+  "sourceRowsCovered": 69,
+  "profiles": [
+    {
+      "id": "01",
+      "tag": "SUM-SC-SM-FO-TV",
+      "sourceRows": [
+        1,
+        18,
+        19,
+        20,
+        21
+      ],
+      "measure": "目标函数差",
+      "file": "ULB-profile-01.md",
+      "sha256": "43e5d379f6fdae673aa76a68ee8efd384cf8465433572e93cc11a86a9f3844cd"
+    },
+    {
+      "id": "02",
+      "tag": "SUM-C-NS-SUBG-STAT",
+      "sourceRows": [
+        2,
+        38,
+        39,
+        40,
+        41,
+        42
+      ],
+      "measure": "期望目标函数差",
+      "file": "ULB-profile-02.md",
+      "sha256": "4fb4d01a7771a4ba6818ac9b947341bc7978aa783b500963760f293c63d97dc1"
+    },
+    {
+      "id": "04",
+      "tag": "SUM-SC-NS-SUBG-TV",
+      "sourceRows": [
+        4
+      ],
+      "measure": "期望目标函数差",
+      "file": "ULB-profile-04.md",
+      "sha256": "c48caeee763a2baa9291f947017bbbd757510ac2334fb0410611bb31feccd828"
+    },
+    {
+      "id": "06",
+      "tag": "SUM-C-NS-SUBG-TV",
+      "sourceRows": [
+        6,
+        43
+      ],
+      "measure": "期望目标函数差",
+      "file": "ULB-profile-06.md",
+      "sha256": "1c0b1ff907e9b6c918a98382f0a3389a263e0ab84f6e1eaeaed04f80e2b73bf7"
+    },
+    {
+      "id": "07",
+      "tag": "STO-NC-SM-SFO-STAT",
+      "sourceRows": [
+        7,
+        8,
+        12,
+        59,
+        60
+      ],
+      "measure": "时间平均期望梯度范数平方",
+      "file": "ULB-profile-07.md",
+      "sha256": "b0e3106c234ee37a67f16aa31419fe804add66a79947a230ef8e83b79357ffd9"
+    },
+    {
+      "id": "09",
+      "tag": "STO-NC-SM-SFO-TV",
+      "sourceRows": [
+        9,
+        61
+      ],
+      "measure": "时间平均期望梯度范数平方",
+      "file": "ULB-profile-09.md",
+      "sha256": "b803965f45f9bbccae8048364178796863acf11ca630f364fd2f2981e542fd67"
+    },
+    {
+      "id": "10",
+      "tag": "SUM-PL-SM-SFO-STAT",
+      "sourceRows": [
+        10
+      ],
+      "measure": "期望目标函数差",
+      "file": "ULB-profile-10.md",
+      "sha256": "c0d482d6469d84ef1ca4bc1825e63418b81207a9afd994a60b495531e942de33"
+    },
+    {
+      "id": "11",
+      "tag": "SUM-NC-SM-SFO-STAT",
+      "sourceRows": [
+        11,
+        47
+      ],
+      "measure": "时间平均期望梯度范数平方",
+      "file": "ULB-profile-11.md",
+      "sha256": "c72e44b62b581b0b8c39a56498198605aab857adb2be285b45257ccf9ff46460"
+    },
+    {
+      "id": "13",
+      "tag": "STO-PL-SM-SFO-STAT",
+      "sourceRows": [
+        13
+      ],
+      "measure": "期望目标函数差",
+      "file": "ULB-profile-13.md",
+      "sha256": "499730e6559e44f3ed6a90acda9241548100798799da90a958058caa8edd4ab6"
+    },
+    {
+      "id": "14",
+      "tag": "SUM-C-SM-FO-STAT",
+      "sourceRows": [
+        5,
+        14,
+        31
+      ],
+      "measure": "期望目标函数差",
+      "file": "ULB-profile-14.md",
+      "sha256": "bbe842d7372e83c566922d2726ad0b5889303990e88335fe75874d3ed60cc349"
+    },
+    {
+      "id": "17",
+      "tag": "SUM-SC-SM-FO-STAT",
+      "sourceRows": [
+        3,
+        15,
+        16,
+        17
+      ],
+      "measure": "期望目标函数差",
+      "file": "ULB-profile-17.md",
+      "sha256": "f89df53b282923d2c6bc18b391e3855177304f5551ee38048b63686a73271217"
+    },
+    {
+      "id": "22",
+      "tag": "SUM-SC-SM-SFO-STAT",
+      "sourceRows": [
+        22,
+        23,
+        24,
+        25
+      ],
+      "measure": "期望目标函数差",
+      "file": "ULB-profile-22.md",
+      "sha256": "d2ad28090ebe5e840219c16b79318ded7d817d17565dbe57f7370b83f760bdfa"
+    },
+    {
+      "id": "26",
+      "tag": "SUM-SC-SM-SFO-TV",
+      "sourceRows": [
+        26
+      ],
+      "measure": "期望目标函数差",
+      "file": "ULB-profile-26.md",
+      "sha256": "4b294383d91568b67b2c3aff9aa095909cc1652ccf656dd216d88b23bbe0e93b"
+    },
+    {
+      "id": "27",
+      "tag": "SUM-SC-NS-FO-STAT-COMP-PROX",
+      "sourceRows": [
+        27,
+        28
+      ],
+      "measure": "最优点距离平方",
+      "file": "ULB-profile-27.md",
+      "sha256": "d194cb749441c8a0a113e8316e1112b85204c6ca91aa4f84aae4d1aaee085e71"
+    },
+    {
+      "id": "29",
+      "tag": "SUM-SC-NS-FO-TV-COMP-PROX",
+      "sourceRows": [
+        29
+      ],
+      "measure": "期望最优点距离平方",
+      "file": "ULB-profile-29.md",
+      "sha256": "30837ac20b2614f43dd0344f195dc5a411dd23d428cd55e471f314106eafaa44"
+    },
+    {
+      "id": "30",
+      "tag": "SUM-SC-NS-SUBG-STAT",
+      "sourceRows": [
+        30
+      ],
+      "measure": "期望目标函数差",
+      "file": "ULB-profile-30.md",
+      "sha256": "01c8b5d65c28efd7c092221b9151b0bd489e0a063ad22c162c6885105fc7374d"
+    },
+    {
+      "id": "32",
+      "tag": "SUM-C-SM-FO-TV",
+      "sourceRows": [
+        32
+      ],
+      "measure": "目标函数差",
+      "file": "ULB-profile-32.md",
+      "sha256": "988e3800c37ec255d01d3faf14fa07651c5a6f568e9bdfadcdf51113b9810d5d"
+    },
+    {
+      "id": "33",
+      "tag": "SUM-C-SM-SFO-STAT",
+      "sourceRows": [
+        33
+      ],
+      "measure": "期望目标函数差",
+      "file": "ULB-profile-33.md",
+      "sha256": "bc7747c9c5e7bc1d61cdbc733293676c4ec2c70ceb6849fcd88cc1753e075cd7"
+    },
+    {
+      "id": "34",
+      "tag": "SUM-C-NS-FO-STAT-COMP-PROX",
+      "sourceRows": [
+        34
+      ],
+      "measure": "复合目标差",
+      "file": "ULB-profile-34.md",
+      "sha256": "2189421c6fac72953dc14257b377b83479f0862036cf54ebe90b1b9f8c045e73"
+    },
+    {
+      "id": "35",
+      "tag": "SUM-C-NS-SFO-STAT",
+      "sourceRows": [
+        35
+      ],
+      "measure": "期望目标函数差",
+      "file": "ULB-profile-35.md",
+      "sha256": "1948b67aed0eeb087c0a0a8e4c5bdeab2c83357fb28a2021c541044882186167"
+    },
+    {
+      "id": "36",
+      "tag": "SUM-C-NS-SFO-TV-COMP",
+      "sourceRows": [
+        36
+      ],
+      "measure": "期望复合目标差",
+      "file": "ULB-profile-36.md",
+      "sha256": "1d3c35d530758a0116472ecba2704dff09912c774e9e672e0aab8d0091b97a6c"
+    },
+    {
+      "id": "37",
+      "tag": "SUM-C-NS-SFO-TV-COMP-PROX",
+      "sourceRows": [
+        37
+      ],
+      "measure": "期望复合目标差",
+      "file": "ULB-profile-37.md",
+      "sha256": "14921a4d47cc886bc4ef58dd8c93bd55af5d8d219f6b778a47f950ddf0121c06"
+    },
+    {
+      "id": "44",
+      "tag": "SUM-NC-SM-FO-STAT",
+      "sourceRows": [
+        44
+      ],
+      "measure": "时间平均期望梯度范数平方",
+      "file": "ULB-profile-44.md",
+      "sha256": "450166ecf33084b7e8e97130fab71e3bf3bfd5e324267b1055ba46afb4329fe3"
+    },
+    {
+      "id": "46",
+      "tag": "SUM-NC-SM-FO-TV",
+      "sourceRows": [
+        45,
+        46
+      ],
+      "measure": "时间平均梯度范数平方",
+      "file": "ULB-profile-46.md",
+      "sha256": "8b716551dfd53e6e35c13a088025ff35abc1602d2fb26f2dfb54fe52bbf8f8bf"
+    },
+    {
+      "id": "48",
+      "tag": "SUM-NC-SM-SFO-TV",
+      "sourceRows": [
+        48
+      ],
+      "measure": "时间平均期望梯度范数平方",
+      "file": "ULB-profile-48.md",
+      "sha256": "92b96dfac9c0c0722104612690bbe80324714a7645517b903a844750b3c6caf3"
+    },
+    {
+      "id": "49",
+      "tag": "SUM-NC-NS-SFO-STAT-COMP-PROX",
+      "sourceRows": [
+        49
+      ],
+      "measure": "时间平均期望 proximal-gradient mapping 范数平方",
+      "file": "ULB-profile-49.md",
+      "sha256": "6a1cb0e9ab5197bd60b9a831d34fe40eb881bbc709845a2332ae2ae8ea612388"
+    },
+    {
+      "id": "50",
+      "tag": "SUM-PL-SM-FO-STAT",
+      "sourceRows": [
+        50
+      ],
+      "measure": "期望目标函数差",
+      "file": "ULB-profile-50.md",
+      "sha256": "ea663c38681bc712be60eb28937c23150ed0ade12c54743f34abb932155145a4"
+    },
+    {
+      "id": "51",
+      "tag": "SUM-PL-SM-FO-TV",
+      "sourceRows": [
+        51
+      ],
+      "measure": "目标函数差",
+      "file": "ULB-profile-51.md",
+      "sha256": "e40217a4d5171670b4a635e1f0b1e24a0b35f10fccc549f5eae4897958af339d"
+    },
+    {
+      "id": "52",
+      "tag": "STO-SC-SM-SFO-STAT",
+      "sourceRows": [
+        52
+      ],
+      "measure": "期望目标函数差",
+      "file": "ULB-profile-52.md",
+      "sha256": "e084200fe5d0f88a9557a11537d9e3aab24733c8263a457ce5b0a2a6a6811412"
+    },
+    {
+      "id": "53",
+      "tag": "STO-SC-SM-SFO-TV",
+      "sourceRows": [
+        53
+      ],
+      "measure": "期望目标函数差",
+      "file": "ULB-profile-53.md",
+      "sha256": "1c8604fb10cab5bb8beae5e5d6c3602f6d8d63193619c8fc61e313e11ff41668"
+    },
+    {
+      "id": "54",
+      "tag": "STO-SC-NS-SFO-STAT",
+      "sourceRows": [
+        54
+      ],
+      "measure": "期望目标函数差",
+      "file": "ULB-profile-54.md",
+      "sha256": "d1e31f403458a72f830b6d250381dd3dcc48a3e616977c4a71e38ea521776bf5"
+    },
+    {
+      "id": "55",
+      "tag": "STO-SC-NS-SFO-TV",
+      "sourceRows": [
+        55
+      ],
+      "measure": "期望目标函数差",
+      "file": "ULB-profile-55.md",
+      "sha256": "4f71ab78ee18edaa77fbea899ccf005facf6fc14a54af5b76009ffbca4a2e620"
+    },
+    {
+      "id": "56",
+      "tag": "STO-C-SM-SFO-TV",
+      "sourceRows": [
+        56
+      ],
+      "measure": "期望目标函数差",
+      "file": "ULB-profile-56.md",
+      "sha256": "7805f21eccdb0909e3af9a841a2a97ca4da5be8bd6da77e9b4300dfbfa9950db"
+    },
+    {
+      "id": "57",
+      "tag": "STO-C-NS-SFO-STAT",
+      "sourceRows": [
+        57
+      ],
+      "measure": "期望目标函数差",
+      "file": "ULB-profile-57.md",
+      "sha256": "51d955bd5f66f764bb1a7df99345ec08925b0ce6211f9cbad8c8bd778ff9ca6d"
+    },
+    {
+      "id": "58",
+      "tag": "STO-C-NS-SFO-TV",
+      "sourceRows": [
+        58
+      ],
+      "measure": "期望目标函数差",
+      "file": "ULB-profile-58.md",
+      "sha256": "9a91f23de1a63b3e2a0ed9ce68f9074f1342ed2ffcd2ad2b30fa4e40e16cb50e"
+    },
+    {
+      "id": "63",
+      "tag": "SUM-SC-NS-SFO-STAT-COMP-PROX",
+      "sourceRows": [
+        63
+      ],
+      "measure": "期望复合目标差",
+      "file": "ULB-profile-63.md",
+      "sha256": "dcbf49348fb82898c9436f3c94bc4cb64f759130b59dd95440ef4a8348548e8d"
+    },
+    {
+      "id": "64",
+      "tag": "SUM-SC-NS-SFO-TV",
+      "sourceRows": [
+        64
+      ],
+      "measure": "期望目标函数差",
+      "file": "ULB-profile-64.md",
+      "sha256": "ae2544d67cd5df263f8476a384944711d742d4aeaf87286ff4d8f2d626f4add7"
+    },
+    {
+      "id": "65",
+      "tag": "SUM-C-SM-SFO-TV",
+      "sourceRows": [
+        65
+      ],
+      "measure": "期望目标函数差",
+      "file": "ULB-profile-65.md",
+      "sha256": "28b75c1902935af57281bd24dd4a52e77ebe9fddebda8c199beafc5b7a48e539"
+    },
+    {
+      "id": "66",
+      "tag": "SUM-C-NS-FO-TV-COMP-PROX",
+      "sourceRows": [
+        66
+      ],
+      "measure": "复合目标差",
+      "file": "ULB-profile-66.md",
+      "sha256": "516957613fd8b538eb5eed18f3abcb753787b069a04517e23c879457371a332f"
+    },
+    {
+      "id": "67",
+      "tag": "SUM-NC-NS-FO-STAT",
+      "sourceRows": [
+        67
+      ],
+      "measure": "期望 Goldstein 残差（固定半径 δ）",
+      "file": "ULB-profile-67.md",
+      "sha256": "e442e434a0859abac36a2cb2d75140637df6a56b88ea0160323ee28e0d29def4"
+    },
+    {
+      "id": "68",
+      "tag": "SUM-NC-NS-FO-TV",
+      "sourceRows": [
+        68
+      ],
+      "measure": "期望 Goldstein 残差（固定半径 δ）",
+      "file": "ULB-profile-68.md",
+      "sha256": "a986c8b3667e705d7d3c4384b29c6cd11a930b33abfadb80f60f570982084547"
+    },
+    {
+      "id": "72",
+      "tag": "SUM-PL-SM-SFO-TV",
+      "sourceRows": [
+        72
+      ],
+      "measure": "期望目标函数差",
+      "file": "ULB-profile-72.md",
+      "sha256": "8d3e7537b2c7f7a9cf00d43337e09c566d5710216c150d473785b360c6486d5a"
+    },
+    {
+      "id": "74",
+      "tag": "STO-PL-SM-SFO-TV",
+      "sourceRows": [
+        74
+      ],
+      "measure": "期望目标函数差",
+      "file": "ULB-profile-74.md",
+      "sha256": "9227db025d8c3d2b2b09b93ddb3f9a8c4aa52d9ce04b170b6b49ebff619124b6"
+    }
+  ]
+}
