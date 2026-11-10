@@ -5,7 +5,7 @@ import { fileURLToPath } from "node:url";
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const source = await readFile(path.join(root, "dist/index.html"), "utf8");
 const title = "Open Questions · OptBound";
-const description = "Browse decentralized optimization profiles, download each setting, and view topic assignments.";
+const description = "Browse decentralized optimization settings, download available profiles, and view topic assignments.";
 const page = source
   .replace(/<title>[^<]*<\/title>/, `<title>${title}</title>`)
   .replaceAll("https://optbound.reaslab.io/\"", "https://optbound.reaslab.io/topics/\"")

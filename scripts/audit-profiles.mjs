@@ -14,10 +14,15 @@ for (const profile of catalog.profiles) {
   assert.match(profile.id, /^\d{2}$/);
   assert(!ids.has(profile.id), `Duplicate profile ${profile.id}`);
   assert(!tags.has(profile.tag), `Duplicate setting ${profile.tag}`);
-  assert.equal(profile.file, `ULB-profile-${profile.id}.md`);
   assert(profile.measure.length > 0);
-  const content = await readFile(path.join(root, "public/profiles", profile.file));
-  assert.equal(createHash("sha256").update(content).digest("hex"), profile.sha256, `Profile ${profile.id} differs from the release`);
+  if (profile.profileStatus === "pending") {
+    assert.equal(profile.file, null, `Pending profile ${profile.id} must not have a download`);
+    assert.equal(profile.sha256, null);
+  } else {
+    assert.equal(profile.file, `ULB-profile-${profile.id}.md`);
+    const content = await readFile(path.join(root, "public/profiles", profile.file));
+    assert.equal(createHash("sha256").update(content).digest("hex"), profile.sha256, `Profile ${profile.id} differs from the release`);
+  }
   for (const row of profile.sourceRows) {
     assert(!rows.has(row), `Source row ${row} appears twice`);
     rows.add(row);
@@ -33,4 +38,4 @@ for (const [id, people] of Object.entries(assignments)) {
 }
 assert.equal(rows.size, catalog.sourceRowsCovered);
 assert((await stat(path.join(root, "public/profiles", catalog.archive))).size > 0);
-console.log(`Profile audit passed: ${ids.size} settings, ${rows.size} source rows, ${Object.values(assignments).filter((people) => people.length).length} assigned.`);
+console.log(`Profile audit passed: ${ids.size} settings, ${rows.size} source rows, ${catalog.profiles.filter((profile) => profile.file).length} downloads, ${catalog.profiles.filter((profile) => profile.profileStatus === "pending").length} pending, ${Object.values(assignments).filter((people) => people.length).length} assigned.`);

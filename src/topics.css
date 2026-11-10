@@ -342,6 +342,16 @@
   font-size: 12px;
 }
 
+.topics-page .topic-pending,
+.topics-page .topics-availability {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.topics-page .topics-availability {
+  margin: 10px 0 0;
+}
+
 .topics-page .topic-download {
   min-height: 36px;
   display: inline-flex;

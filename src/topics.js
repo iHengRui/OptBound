@@ -36,7 +36,9 @@ function profileRow(profile) {
     <td data-label="Assignee"><div class="topic-assignees">${profile.people.length
       ? profile.people.map((name) => `<span class="topic-person"><span class="topic-person-dot" aria-hidden="true"></span>${escapeHtml(name)}</span>`).join("")
       : '<span class="topic-unassigned">Unassigned</span>'}</div></td>
-    <td data-label="Profile"><a class="topic-download" href="${base}profiles/${profile.file}" download="${profile.file}" aria-label="Download the Markdown profile for setting ${profile.id}"><i data-lucide="download" aria-hidden="true"></i><span>Download MD</span></a></td>
+    <td data-label="Profile">${profile.file
+      ? `<a class="topic-download" href="${base}profiles/${profile.file}" download="${profile.file}" aria-label="Download the Markdown profile for setting ${profile.id}"><i data-lucide="download" aria-hidden="true"></i><span>Download MD</span></a>`
+      : '<span class="topic-pending">Profile pending</span>'}</td>
   </tr>`;
 }
 
@@ -45,8 +47,10 @@ export function renderTopics(app) {
   document.documentElement.lang = "en";
   document.title = "Open Questions · OptBound";
   document.querySelector('link[rel="canonical"]').href = "https://optbound.reaslab.io/topics/";
-  document.querySelector('meta[name="description"]').content = "Browse decentralized optimization profiles, download each setting, and view topic assignments.";
+  document.querySelector('meta[name="description"]').content = "Browse decentralized optimization settings, download available profiles, and view topic assignments.";
   const assigned = profiles.filter((profile) => profile.people.length).length;
+  const availableCount = profiles.filter((profile) => profile.file).length;
+  const pendingCount = profiles.length - availableCount;
   const people = [...new Set(profiles.flatMap((profile) => profile.people))].sort((a, b) => a.localeCompare(b, "zh-CN"));
 
   app.innerHTML = `
@@ -66,9 +70,10 @@ export function renderTopics(app) {
           <p class="topics-breadcrumb"><a href="${base}">OptBound</a><span aria-hidden="true"> / </span>Decentralized Optimization</p>
           <div class="topics-heading-row">
             <div><p class="section-kicker">Profiles & assignments</p><h1>Open Questions</h1></div>
-            <a class="command-button secondary" href="${base}profiles/${catalog.archive}" download><i data-lucide="download" aria-hidden="true"></i><span>Download all ${profiles.length} profiles</span></a>
+            <a class="command-button secondary" href="${base}profiles/${catalog.archive}" download><i data-lucide="download" aria-hidden="true"></i><span>Download all ${availableCount} profiles</span></a>
           </div>
-          <p class="topics-intro">Download a profile and see who is working on each setting. Each setting uses one standard measure; duplicate table rows are grouped.</p>
+          <p class="topics-intro">Download a profile and see who is working on each setting. Each profile uses one standard measure; duplicate table rows are grouped.</p>
+          ${pendingCount ? `<p class="topics-availability">${availableCount} profiles available; ${pendingCount} pending.</p>` : ""}
           <div class="topics-stats" aria-label="Assignment overview">
             <div class="topic-stat"><strong>${profiles.length}</strong><span>Settings</span></div>
             <div class="topic-stat"><strong>${assigned}</strong><span>Assigned</span></div>
@@ -119,7 +124,7 @@ export function renderTopics(app) {
   function filterProfiles() {
     const terms = controls.q.value.trim().toLowerCase().split(/\s+/).filter(Boolean);
     const visible = profiles.filter((profile) => {
-      const text = [profile.id, profile.tag, profile.description, profile.measure, ...profile.people, ...profile.sourceRows].join(" ").toLowerCase();
+      const text = [profile.id, profile.tag, profile.description, profile.measure, profile.file ? "" : "profile pending", ...profile.people, ...profile.sourceRows].join(" ").toLowerCase();
       return terms.every((term) => text.includes(term))
         && (!controls.geometry.value || profile.tags[1] === controls.geometry.value)
         && (!controls.network.value || profile.tags.includes(controls.network.value))

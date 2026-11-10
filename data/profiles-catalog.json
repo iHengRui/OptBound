@@ -1,7 +1,7 @@
 {
   "updatedAt": "2026-11-10",
   "archive": "profiles-43-20261110.zip",
-  "sourceRowsCovered": 69,
+  "sourceRowsCovered": 74,
   "profiles": [
     {
       "id": "01",
@@ -380,6 +380,17 @@
       "sha256": "9a91f23de1a63b3e2a0ed9ce68f9074f1342ed2ffcd2ad2b30fa4e40e16cb50e"
     },
     {
+      "id": "62",
+      "tag": "STO-NC-NS-SFO-STAT",
+      "sourceRows": [
+        62
+      ],
+      "measure": "Expected Goldstein residual (fixed radius δ)",
+      "file": null,
+      "sha256": null,
+      "profileStatus": "pending"
+    },
+    {
       "id": "63",
       "tag": "SUM-SC-NS-SFO-STAT-COMP-PROX",
       "sourceRows": [
@@ -440,6 +451,39 @@
       "sha256": "a986c8b3667e705d7d3c4384b29c6cd11a930b33abfadb80f60f570982084547"
     },
     {
+      "id": "69",
+      "tag": "SUM-NC-NS-SFO-TV",
+      "sourceRows": [
+        69
+      ],
+      "measure": "To be specified",
+      "file": null,
+      "sha256": null,
+      "profileStatus": "pending"
+    },
+    {
+      "id": "70",
+      "tag": "SUM-NC-NS-SUBG-STAT",
+      "sourceRows": [
+        70
+      ],
+      "measure": "To be specified",
+      "file": null,
+      "sha256": null,
+      "profileStatus": "pending"
+    },
+    {
+      "id": "71",
+      "tag": "SUM-NC-NS-SUBG-TV",
+      "sourceRows": [
+        71
+      ],
+      "measure": "To be specified",
+      "file": null,
+      "sha256": null,
+      "profileStatus": "pending"
+    },
+    {
       "id": "72",
       "tag": "SUM-PL-SM-SFO-TV",
       "sourceRows": [
@@ -448,6 +492,17 @@
       "measure": "Expected objective gap",
       "file": "ULB-profile-72.md",
       "sha256": "8d3e7537b2c7f7a9cf00d43337e09c566d5710216c150d473785b360c6486d5a"
+    },
+    {
+      "id": "73",
+      "tag": "STO-NC-NS-SFO-TV",
+      "sourceRows": [
+        73
+      ],
+      "measure": "To be specified",
+      "file": null,
+      "sha256": null,
+      "profileStatus": "pending"
     },
     {
       "id": "74",
